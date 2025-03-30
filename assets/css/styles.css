@@ -49,3 +49,9 @@ tr {
     background-color: #333;
     color: white;
 }
+
+td {
+    margin: 5px auto;
+    padding: 10px;
+    text-align: center;
+}
