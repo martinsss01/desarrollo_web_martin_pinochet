@@ -17,9 +17,9 @@
     <br>
     <br>
 
-    <div id="activityForm" style="display: none; color: white;">
+    <div id="activityForm" style="display: none; color: white;"> <!-- Make form more complex, more info, more details -->
         <div class="modal-content">
-            <form action="submit_activity.html" method="post">
+            <form action="submit_activity.html" method="post" enctype="multipart/form-data">
                 <label for="activityName">Nombre de Actividad:</label><br>
                 <input type="text" id="activityName" name="activityName" required><br><br>
 
@@ -43,10 +43,13 @@
                     <option value="Pendiente">Pendiente</option>
                 </select><br><br>
 
-                <label for="activityImage">Foto:</label><br>
-                <input type="file" id="activityImage" name="activityImage" accept="image/*" required><br><br>
-                <button type="submit">Guardar</button>
+                <label for="activityImage">Fotos:</label><br>
+                <input type="file" id="activityImage" name="activityImage[]" accept="image/*" multiple required><br><br> <!-- uploading pics separately -->
+                <span id="fileError" style="color: red; display: none;">Solo puedes subir hasta 5 fotos.</span><br>
+
                 <button type="button" onclick="closeForm()">Cancelar</button>
+                <button type="submit">Agregar</button>
+
             </form>
         </div>
     </div>
@@ -97,6 +100,7 @@
                 <td><img width=100px src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fk4jigv2dgci51.png&f=1&nofb=1&ipt=1b447a087f0ee58ad231eae2deda544d7d88ea9b767017a7bdbeb5c525a7083d&ipo=images"> </td>
             </tr>
             <tr>
+                <!-- life lol -->
                 <td><a href="actividad5.html">Actividad 5</a></td>
                 <td>01/04/2002</td>
                 <td>-</td>
@@ -119,4 +123,17 @@
     function closeForm() {
         document.getElementById("activityForm").style.display = "none";
     }
+
+    document.getElementById("activityImage").addEventListener("change", function () {
+        const fileInput = this;
+        const maxFiles = 5;
+        const errorSpan = document.getElementById("fileError");
+
+        if (fileInput.files.length > maxFiles) {
+            errorSpan.style.display = "block"; // Show error
+            fileInput.value = ""; // Clear the file input
+        } else {
+            errorSpan.style.display = "none"; // Hide error message
+        }
+    });
 </script>
