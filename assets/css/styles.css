@@ -40,7 +40,7 @@ nav ul li a:hover {
 table {
     border-collapse: collapse;
     border-width: 2px;
-    border-color: rgb(58, 124, 20);
+    border-color: rgb(255, 255, 255);
     width: 80%;
     margin: 20px auto;
 }
