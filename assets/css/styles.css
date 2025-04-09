@@ -95,3 +95,20 @@ td {
     position: relative;
 }
 
+canvas {
+    max-width: 1000px;
+    max-height: 650px;
+    width: 100%; 
+    height: auto; 
+}
+table{
+    border: 1px solid white;
+}
+td, th {
+    border: 1px solid white;
+}
+table img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+}

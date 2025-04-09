@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1 id="first_title"> Estadísticas </h1>
@@ -12,4 +13,145 @@
             <li><a href="../index.html"> Volver </a></li>
         </ul>
     </nav>
+    <div style="display: flex; gap: 20px; justify-content: center;">
+        <canvas id="lineChart"></canvas>
+        <canvas id="pieChart"></canvas>
+    </div>
+    <div style="display: flex; gap: 20px; justify-content: center;">
+        <canvas id="barChart"></canvas>
+    </div>
+    
+    
+
 </body>
+
+<script> // Line chart
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Activity Data',
+                data: [10, 20, 15, 25, 30],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                tension: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Values'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<script> // Pie chart
+    const ctx2 = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(ctx2, {
+        type: 'pie', 
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'], // Labels for the chart
+            datasets: [{
+                label: 'Votes',
+                data: [12, 19, 3, 5, 2], // Data values for each slice
+                backgroundColor: [ // Colors for each slice
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                ],
+                borderColor: [ // Border colors for each slice
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1 // Border width
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top' // Position of the legend
+                }
+            }
+        }
+    });
+</script>
+<script> // Bar Chart
+    const ctx3 = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(ctx3, {
+        type: 'bar', // Specify the chart type as 'bar'
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May'], // X-axis labels
+            datasets: [{
+                label: 'Activity Data',
+                data: [10, 20, 15, 25, 30], // Y-axis data points
+                backgroundColor: [ // Colors for each bar
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)'
+                ],
+                borderColor: [ // Border colors for each bar
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1 // Border width
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top' // Position of the legend
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months' // X-axis title
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Values' // Y-axis title
+                    },
+                    beginAtZero: true // Start Y-axis at 0
+                }
+            }
+        }
+    });
+</script>
