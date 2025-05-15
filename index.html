@@ -10,7 +10,7 @@
     <h1 id="first_title">Bienvenido a mi página</h1>
     <nav>
         <ul>
-            <li><a href="#" onclick="openForm()">Agregar evaluación</a></li>
+            <li><a href="html/agregar_actividad.html" onclick="openForm()">Agregar evaluación</a></li>
             <li><a href="html/ver_actividades.html">Ver evaluciones</a></li>
             <li><a href="html/estadisticas.html">Estadísticas</a></li>
         </ul>
@@ -19,100 +19,14 @@
     <br>
 
     <!-- CONFIRMATION FORM FOR THE ACTIVITY FORM -->
-    <div id="confirmationForm" style="display: none; font-size: 12px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; background-color: white; vertical-align:middle; 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <!-- <div id="confirmationForm" style="display: none; font-size: 12px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; background-color: white; vertical-align:middle; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <h3>¿Estás seguro de que quieres subir esta evaluación?</h3>
         <button type="button" onclick="closeConfirmation()">No</button>
         <button type="submit" onclick="closeConfirmation()">Sí</button>
-    </div>
+    </div> -->
 
     <!-- CONFIRMATION FORM -->
-    <div id="activityForm" style="display: none; color: white;"> <!-- Make form more complex, more info, more details -->
-        <div class="modal-content" style="padding: 30px; width: 1000px; height: 800px; align-items: center; justify-content: center;">
-            <form method="post" enctype="multipart/form-data">
-                <h3> Agregar nueva actividad </h3>
-
-                <div style="display: flex; gap: 30px; justify-content: center;">
-                    <div>
-                        <label for="activityName">Nombre:</label><br>
-                        <input type="text" id="activityName" name="activityName" required>
-                    </div>
-                    <div>
-                        <label for="activityOrganizer">Organizador:</label><br>
-                        <input type="text" id="activityOrganizer" name="activityOrganizer" required>
-                    </div>
-                </div>
-                <br>
-
-                <label for="activityHelpers">Ayudantes:</label><br>
-                <input type="text" id="activityHelpers" name="activityHelpers" required><br><br>
-
-                <label for="area">Área:</label>
-                <select id="area" name="area">
-                    <option value="850"> 850 </option>
-                    <option value="851"> 851 </option>
-                </select><br><br>
-                
-                <label for="building">Edificio:</label>
-                <select id="building" name="building">
-                    <option value="fisica"> Física </option>
-                    <option value="quimica"> Química </option>
-                    <option value="geologia"> Geología </option>
-                </select><br><br>
-                
-                <label for="classroom">Sala:</label>
-                <select id="classroom" name="classroom">
-                    <option value="fisica"> F10 </option>
-                    <option value="quimica"> QP </option>
-                    <option value="geologia"> G303 </option>
-                </select><br>
-
-                <div style="display: flex; gap: 20px; justify-content: center;">
-                    <div>
-                        <label for="startDate">Fecha de Inicio:</label><br>
-                        <input type="date" id="startDate" name="startDate" required>
-                    </div>
-                    <div>
-                        <label for ="startTime">Hora de Inicio:</label><br>
-                        <input type="time" id="startTime" name="startTime" required>
-                    </div>
-                </div> <br>
-                
-                <div style="display: flex; gap: 20px; justify-content: center;">
-                    <div>   
-                        <label for="endDate">Fecha de Término:</label><br>
-                        <input type="date" id="endDate" name="endDate" required>
-                    </div><br><br>
-                    <div>
-                        <label for ="endTime">Hora de Término:</label><br>
-                        <input type="time" id="endTime" name="endTime" required>
-                    </div>
-                </div><br>
-
-                <label for="participants">Participantes:</label><br>
-                <input type="number" min=1 max=200 id="participants" name="participants" required><br><br>
-
-                <label for="activityStatus">Estado de Actividad:</label><br>
-                <select id="activityStatus" name="activityStatus">
-                    <option value="Terminado">Terminado</option>
-                    <option value="En Proceso">En Proceso</option>
-                    <option value="Pendiente">Pendiente</option>
-                </select><br><br>
-
-                <label for="activityContent">Temario</label><br>
-                <textarea id="activityContent" name="activityContent"></textarea><br><br>
-
-                <label for="activityDescription">Descripción</label><br>
-                <textarea id="activityDescription" name="activityDescription" required></textarea><br><br>
-
-                <label for="activityImage">Fotos:</label><br>
-                <input type="file" id="activityImage" name="activityImage[]" accept="image/*" multiple required><br><br> <!-- uploading pics separately -->
-                <span id="fileError" style="color: red; display: none;">Solo puedes subir hasta 5 fotos.</span><br>
-
-                <button type="button" onclick="closeForm()">Cancelar</button>
-                <button type="button" onclick="openConfirmation()">Agregar</button>
-            </form>
-        </div>
-    </div>
+    
 
     <div id="resumen_evaluaciones">
         <h2> Actividades más recientes </h2>
@@ -172,58 +86,9 @@
         </tbody>
         </table>
     </div>
-    <script>
-        function openForm() {
-            document.getElementById("activityForm").style.display = "flex";
-        }
-    
-        function closeForm() {
-            document.getElementById("activityForm").style.display = "none";
-            document.getElementById("activityOrganizer").value = ""
-            document.getElementById("activityHelpers").value = ""
-            document.getElementById("participants").value = ""
-            document.getElementById("startDate").value = ""
-            document.getElementById("startTime").value = ""
-            document.getElementById("endDate").value = ""
-            document.getElementById("endTime").value = ""
-            document.getElementById("activityStatus").value = ""
-        }
-    
-    function openConfirmation() {
-        document.getElementById("confirmationForm").style.display = "flex";
-        document.getElementById("overlay").style.display = "block";
-    }
-    
-    function closeConfirmation() {
-        document.getElementById("confirmationForm").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-        closeForm();
-    }
-    
-        document.getElementById("activityImage").addEventListener("change", function () {
-            const fileInput = this;
-            const maxFiles = 5;
-            const errorSpan = document.getElementById("fileError");
-    
-            if (fileInput.files.length > maxFiles) {
-                errorSpan.style.display = "block"; // Show error
-                fileInput.value = ""; // Clear the file input
-            } else {
-                errorSpan.style.display = "none"; // Hide error message
-            }
-        });
-    
-        // Sets the value of the end date minimum to the start date
-        document.getElementById("startDate").addEventListener("change", function () {
-            document.getElementById("endDate").min = this.value;
-        });
-        if (document.getElementById("startDate") == document.getElementById("endDate")){
-            document.getElementById("startTime").addEventListener("change", function () {
-            document.getElementById("endTime").min = this.value;
-        });
-        }
-    
-    </script>
+    <script lang="javascript" src="js/formConfirmation.js"></script>
+    <script lang="javascript" src="js/formValidation.js"></script>
+    <script lang="javascript" src="js/select.js"></script>
 </body>
 </html>
 
