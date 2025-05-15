@@ -4,89 +4,72 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Agregar Evaluación</title>
-        <link rel="stylesheet" href="../assets/css/styles.css">
+        <link rel="stylesheet" href="../assets/css/form-styles.css">
     </head>
     <body>
-        <div id="activityForm" class="main-cointainer" style="color: white;"> <!-- Make form more complex, more info, more details -->
-        <div id="val-box" hidden>
-            <h2 id="val-msg"></h2>
-            <ul id="val-list"></ul>
-        </div>
-        <div style="padding: 30px; width: 1000px; height: 800px; align-items: center; justify-content: center;">
+        <div id="activityForm" class="main-cointainer"> <!-- Make form more complex, more info, more details -->
+            <div id="val-box" hidden>
+                <h2 id="val-msg"></h2>
+                <ul id="val-list"></ul>
+            </div>
             <form name="myForm" method="post" enctype="multipart/form-data">
-                <h3> Agregar nueva actividad </h3>
+                <label for="activityName">Nombre:</label>
+                <input type="activity" id="activityName" name="activityName"> <!-- Verification needed -->
 
-                <div style="display: flex; gap: 30px; justify-content: center;">
-                    <div>
-                        <label for="activityName">Nombre:</label><br>
-                        <input type="text" id="activityName" name="activityName"> <!-- Verification needed -->
-                    </div>
-                    <div>
-                        <label for="activityOrganizer">Organizador:</label><br>
-                        <input type="text" id="activityOrganizer" name="activityOrganizer"> <!-- Verification needed -->
-                    </div>
-                </div>
-                <br>
+                <label for="activityOrganizer">Organizador:</label>
+                <input type="name" id="activityOrganizer" name="activityOrganizer"> <!-- Verification needed -->
 
-                <label for="activityHelpers">Ayudante:</label><br>
-                <input type="text" id="activityHelper" name="activityHelper"><br><br> <!-- Verification needed -->
+                <label for="activityHelpers">Ayudante:</label>
+                <input type="name" id="activityHelper" name="activityHelper"> <!-- Verification needed -->
 
                 <label for="area">Área:</label>
                 <select id="area" name="area">
                     <option value="0"> - </option>
-                </select><br><br>
-                
+                </select>
+
                 <label for="classroom">Sala:</label>
                 <select id="classroom" name="classroom">
                     <option value="0"> - </option>
-                </select><br>
+                </select>
 
-                <div style="display: flex; gap: 20px; justify-content: center;">
-                    <div>
-                        <label for="startDate">Fecha de Inicio:</label><br>
-                        <input type="date" id="startDate" name="startDate"> <!-- Verification needed -->
-                    </div>
-                    <div>
-                        <label for ="startTime">Hora de Inicio:</label><br>
-                        <input type="time" id="startTime" name="startTime"> <!-- Verification needed -->
-                    </div>
-                </div> <br>
-                
-                <div style="display: flex; gap: 20px; justify-content: center;">
-                    <div>   
-                        <label for="endDate">Fecha de Término:</label><br>
-                        <input type="date" id="endDate" name="endDate"> <!-- Verification needed -->
-                    </div><br><br>
-                    <div>
-                        <label for ="endTime">Hora de Término:</label><br>
-                        <input type="time" id="endTime" name="endTime"> <!-- Verification needed -->
-                    </div>
-                </div><br>
+                <label for="startDate">Fecha de Inicio:</label>
+                <input type="date" id="startDate" name="startDate"> <!-- Verification needed -->
 
-                <label for="participants">Participantes:</label><br>
-                <input type="number" min=1 max=200 id="participants" name="participants"><br><br> <!-- Verification needed -->
+                <label for ="startTime">Hora de Inicio:</label>
+                <input type="time" id="startTime" name="startTime"> <!-- Verification needed -->
 
-                <label for="activityStatus">Estado de Actividad:</label><br>
+                <label for="endDate">Fecha de Término:</label>
+                <input type="date" id="endDate" name="endDate"> <!-- Verification needed -->
+
+                <label for ="endTime">Hora de Término:</label>
+                <input type="time" id="endTime" name="endTime"> <!-- Verification needed -->
+
+                <label for="participants">Participantes:</label>
+                <input type="number" id="participants" name="participants"> <!-- Verification needed -->
+
+                <label for="activityStatus">Estado de Actividad:</label>
                 <select id="activityStatus" name="activityStatus">
                     <option value="Terminado">Terminado</option>
                     <option value="En Proceso">En Proceso</option>
                     <option value="Pendiente">Pendiente</option>
-                </select><br><br>
+                </select>
 
-                <label for="activityContent">Temario</label><br>
-                <textarea id="activityContent" name="activityContent"></textarea><br><br>
+                <label for="activityContent">Temario</label>
+                <textarea id="activityContent" name="activityContent"></textarea>
 
-                <label for="activityDescription">Descripción</label><br>
-                <textarea id="activityDescription" name="activityDescription"></textarea><br><br> <!-- Verification needed -->
+                <label for="activityDescription">Descripción</label>
+                <textarea id="activityDescription" name="activityDescription"></textarea> <!-- Verification needed -->
 
-                <label for="activityImage">Fotos:</label><br>
-                <input type="file" id="activityImage" name="activityImage[]" accept="image/*" multiple><br><br> <!-- Verification needed -->
-                <span id="fileError" style="color: red; display: none;">Solo puedes subir hasta 5 fotos.</span><br>
-
-                <button type="button" onclick="closeForm()">Cancelar</button>
-                <button id="submit-btn" type="button" onclick="openConfirmation()">Agregar</button>
+                <label for="activityImage">Fotos:</label>
+                <input type="file" id="activityImage" name="activityImage[]" accept="image/*" multiple> <!-- Verification needed -->
+                <span id="fileError" style="color: red; display: none;">Solo puedes subir hasta 5 fotos.</span>
+                
+                <button type="button">Cancelar</button>
+                <button id="submit-btn" type="button">Agregar</button>
             </form>
         </div>
-    </div>
+    <script lang="javascript" src="../js/formConfirmation.js"></script>
+    <script lang="javascript" src="../js/formValidation.js"></script>
+    <script lang="javascript" src="../js/select.js"></script>
     </body>
 </html>
