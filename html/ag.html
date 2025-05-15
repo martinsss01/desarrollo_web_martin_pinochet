@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/form-style2.css">
+</head>
+<body>
+    <div class="main-container">
+        <div id="val-box" hidden>
+            <h2 id="val-msg"></h2>
+            <ul id="val-list"></ul>
+        </div>
+        <form name="myForm" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="nombreActividad">Nombre</label>
+                <input type="name" name="nombreActividad" id="nombreActividad" minlength="15" maxlength="80"><br>
+
+                <label for="organizador">Organizador</label>
+                <input type="name" name="organizador" id="organizador" minlength="15"><br>
+            </div>
+            <label for="ayudante">Ayudante</label>
+            <input type="name" name="ayudante" id="ayudante" minlength="8"><br>
+            
+            <label for="files">Archivos adjuntos (hasta 5)</label>
+            <input type="file" name="files" id="files" multiple accept="image/*,.pdf"><br>
+
+            <div class="date-row">
+            <div>
+                <label for="start-date">Fecha de inicio</label>
+                <input type="date" name="start-date" id="start-date"><br>
+            </div>
+            <div>
+                <label for="final-date">Fecha final</label>
+                <input type="date" name="final-date" id="final-date"><br>
+            </div>
+            </div>    
+
+            <label for="select-area">Area del campus</label>
+            <select name="select-area" id="select-area">
+                <option value="">Seleccione un área</option>
+            </select><br>
+
+            <label for="select-classroom">Sala</label>
+            <select name="select-classroom" id="select-classroom">
+                <option value="">Seleccione una sala</option>
+            </select><br>
+
+            <label for="reason" style="display: none;">Descripción</label>
+            <textarea name="comments" id="comments" rows="4" cols="50" style="display: none;"></textarea><br>
+            
+            <button id="submit-btn" type="button">Enviar</button>
+        </form>
+    </div>
+    <script src="../js/select2.js"></script>
+    <script src="../js/validation2.js"></script>
+</body>
+</html>
