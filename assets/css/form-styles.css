@@ -1,7 +1,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #1a1a1a;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,30 +11,28 @@ body {
 }
 
 .main-container {
-    background-color: #fff;
+    background-color: #333;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 800px;
     width: 100%;
+    
 }
 
 label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #e6e6e6;
 }
 
-input[type="activity"],
+input[type="email"],
 input[type="name"],
 input[type="text"],
 input[type="file"],
-input[type="number"],
-input[type="time"],
-input[type="date"],
 select {
-    width: 100%;
+    width: 40%;
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -102,4 +100,34 @@ button#submit-btn:hover {
         padding: 8px;
         font-size: 14px;
     }
+}
+
+.date-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* space between the two inputs */
+    margin-bottom: 20px;
+    align-items: flex-end; /* aligns the bottoms of the inputs */
+}
+.date-row > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.form-row {
+    display: flex;
+    gap: 20px; /* Adjust spacing between fields */
+}
+
+.form-row div {
+    flex: 1; /* Make both fields take equal width */
+}
+
+#first_title {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
 }
