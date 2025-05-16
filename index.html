@@ -4,29 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarea 1</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="static/assets/css/styles.css">
 </head>
 <body>
     <h1 id="first_title">Bienvenido a mi página</h1>
     <nav>
         <ul>
-            <li><a href="html/agregar_actividad.html">Agregar evaluación</a></li>
-            <li><a href="html/ver_actividades.html">Ver evaluaciones</a></li>
-            <li><a href="html/estadisticas.html">Estadísticas</a></li>
+            <li><a href="static/html/agregar_actividad.html">Agregar evaluación</a></li>
+            <li><a href="static/html/ver_actividades.html">Ver evaluaciones</a></li>
+            <li><a href="static/html/estadisticas.html">Estadísticas</a></li>
         </ul>
     </nav>
-    <br>
-    <br>
-
-    <!-- CONFIRMATION FORM FOR THE ACTIVITY FORM -->
-    <!-- <div id="confirmationForm" style="display: none; font-size: 12px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; background-color: white; vertical-align:middle; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        <h3>¿Estás seguro de que quieres subir esta evaluación?</h3>
-        <button type="button" onclick="closeConfirmation()">No</button>
-        <button type="submit" onclick="closeConfirmation()">Sí</button>
-    </div> -->
-
-    <!-- CONFIRMATION FORM -->
-    
 
     <div id="resumen_evaluaciones">
         <h2> Actividades más recientes </h2>
@@ -35,46 +23,46 @@
                 <tr>
                     <th><b>Nombre de Actividad</b></th>
                     <th><b>Fecha de Inicio</b></th>
-                    <th><b>Fecha de Término</b></th>
+                    <th><b>Comuna</b></th>
                     <th><b>Participantes</b></th>
                     <th><b>Estado de Actividad</b></th>
-                    <th><b>Foto</b></th>
+                    <th><b>Fotos</b></th>
                 </tr>
             </thead>
         <tbody>
-            <tr onclick="window.location.href='html/activities/activity1.html';" style="cursor: pointer;">
+            <tr onclick="window.location.href='static/html/activities/activity1.html';" style="cursor: pointer;">
                 <td><a>Actividad 1</a></td>
                 <td>01/01/2025</td>
-                <td>08/01/2025</td>
+                <td>Camiña</td>
                 <td>2</td>
                 <td>Terminado</td>
                 <td><img alt="Purple sky besides a train rail" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpreview.redd.it%2Fkxov0rcoi4p21.png%3Fauto%3Dwebp%26s%3D8edd6e729acc84e01d55ad0853c7d5c07d86bada&f=1&nofb=1&ipt=0ce59f866c4d1759c6ef1ecef58b192e4ef57725315fd6fa5b60a94b62a14edc&ipo=images"> </td>
             </tr>
-            <tr onclick="window.location.href='html/activities/activity2.html';" style="cursor: pointer;">
+            <tr onclick="window.location.href='static/html/activities/activity2.html';" style="cursor: pointer;">
                 <td><a>Actividad 2</a></td>
                 <td>29/02/2025</td>
-                <td>04/04/2026</td>
+                <td>Huara</td>
                 <td>5</td>
                 <td>Pendiente</td>
                 <td><img alt="Neighborhood" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.hdqwalls.com%2Fwallpapers%2Flate-afternoon-pixel-art-71.jpg&f=1&nofb=1&ipt=3242922254404ef0959b31dde13712ab9a899b472fbadd4846dd90d772f8db5f&ipo=images"> </td>
             </tr>
-            <tr onclick="window.location.href='html/activities/activity3.html';" style="cursor: pointer;">
+            <tr onclick="window.location.href='static/html/activities/activity3.html';" style="cursor: pointer;">
                 <td><a>Actividad 3</a></td>
                 <td>15/06/2023</td>
-                <td>18/06/2023</td>
+                <td>Pozo Almonte</td>
                 <td>15</td>
                 <td>Terminado</td>
                 <td><img alt="Beautiful Valley" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2FEFXSes9UCfsyRVoNeQ2ZTB.png&f=1&nofb=1&ipt=65be8d4bdd871df3e967d75560eb0f2ff324778f065ca2b5afe174a25a88a9a7&ipo=images"> </td>
             </tr>
-            <tr onclick="window.location.href='html/activities/activity4.html';" style="cursor: pointer;">
+            <tr onclick="window.location.href='static/html/activities/activity4.html';" style="cursor: pointer;">
                 <td><a>Actividad 4</a></td>
                 <td>10/03/2010</td>
-                <td>05/07/2012</td>
+                <td>Iquique</td>
                 <td>1</td>
                 <td>Terminado</td>
                 <td><img alt="River in between mountains" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fk4jigv2dgci51.png&f=1&nofb=1&ipt=1b447a087f0ee58ad231eae2deda544d7d88ea9b767017a7bdbeb5c525a7083d&ipo=images"> </td>
             </tr>
-            <tr onclick="window.location.href='html/activities/activity5.html';" style="cursor: pointer;">
+            <tr onclick="window.location.href='static/html/activities/activity5.html';" style="cursor: pointer;">
                 <!-- life lol -->
                 <td><a>Actividad 5</a></td>
                 <td>01/04/2002</td>
