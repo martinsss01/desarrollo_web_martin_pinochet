@@ -4,6 +4,7 @@ const validateName = (name) => {
   
   return lengthValid;
 }
+const validateEmail = (mail) => mail && mail.includes("@");
 
 const validateFiles = (files) => {
   if (!files) return false;
@@ -32,13 +33,12 @@ const validateSelect = (select) => {
 const validateForm = () => {
   // obtener elementos del DOM usando el nombre del formulario.
   let myForm = document.forms["myForm"];
-  let organizer = myForm["organizador"].value;
-  let helper = myForm["ayudante"].value;
+  let organizer = myForm["organizer"].value;
   let name = myForm["nombreActividad"].value;
   let files = myForm["files"].files;
-  let area = myForm["select-area"].value;
-  let classroom = myForm["select-classroom"].value;
-
+  let region = myForm["region"].value;
+  let comuna = myForm["comuna"].value;
+  let email = myForm["email"].value;
   // variables auxiliares de validación y función.
   let invalidInputs = [];
   let isValid = true;
@@ -54,17 +54,17 @@ const validateForm = () => {
   if (!validateName(organizer)) {
     setInvalidInput("Organizador");
   }
-  if (!validateName(helper)) {
-    setInvalidInput("Ayundate");
-  }
   if (!validateFiles(files)) {
     setInvalidInput("Archivos");
   }
-  if (!validateSelect(area)) {
-    setInvalidInput("Area del Campus");
+  if (!validateSelect(region)) {
+    setInvalidInput("Región");
   }
-  if (!validateSelect(classroom)) {
-    setInvalidInput("Sala");
+  if (!validateSelect(comuna)) {
+    setInvalidInput("Comuna");
+  }
+  if (!validateEmail(email)) {
+    setInvalidInput("Email");
   }
 
   // finalmente mostrar la validación

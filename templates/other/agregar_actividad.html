@@ -19,20 +19,26 @@
             <h2 id="val-msg"></h2>
             <ul id="val-list"></ul>
         </div>
-        <form name="myForm" method="post" enctype="multipart/form-data">
+        <form name="myForm" method="post" action="{{url_for('post_activity')}}" enctype="multipart/form-data">
             <div class = "form-row">
-                <label for="nombreActividad">Nombre</label>
+                <label for="nombreActividad">Nombre de actividad</label>
                 <input type="name" name="nombreActividad" id="nombreActividad" minlength="15" maxlength="80"><br>
 
-                <label for="organizador">Organizador</label>
-                <input type="name" name="organizador" id="organizador" minlength="15"><br>
+                <label for="organizer">Organizador</label>
+                <input type="name" name="organizer" id="organizer" minlength="10"><br>
             </div>
             <div class = "form-row">
-            <label for="ayudante">Ayudante</label>
-            <input type="name" name="ayudante" id="ayudante" minlength="8"><br>
             
             <label for="files">Archivos adjuntos (hasta 5)</label>
             <input type="file" name="files" id="files" multiple accept="image/*,.pdf"><br>
+            </div>
+
+            <div class = "form-row">
+                <label for="email">Email</label>
+                <input type="name" name="email" id="email" minlength="10" maxlength="80"><br>
+
+                <label for="phone">Número de teléfono</label>
+                <input type="name" name="phone" id="phone" minlength="10"><br>
             </div>
 
             <div class="date-row">
@@ -47,13 +53,13 @@
             </div>    
 
             <div class="date-row">
-                <label for="select-area">Area del campus</label>
-                <select name="select-area" id="select-area">
+                <label for="region">Region</label>
+                <select name="region" id="region">
                     <option value="">Seleccione un área</option>
                 </select><br>
 
-                <label for="select-classroom">Sala</label>
-                <select name="select-classroom" id="select-classroom">
+                <label for="comuna">Comuna</label>
+                <select name="comuna" id="comuna">
                     <option value="">Seleccione una sala</option>
                 </select><br>
             </div>
