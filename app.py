@@ -38,13 +38,27 @@ def agregar_actividad():
         if validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
             db.create_activity(id_comuna, sector, nombre, email, celular, fecha_inicio, fecha_termino,descripcion)
 
-        return render_template('other/ver_actividades.html', error = error)
+        return redirect('/ver_actividades')
 
 @app.route("/ver_actividades", methods = ["GET"])
 def ver_actividades():
     if request.method == "GET": 
-        return render_template("other/ver_actividades.html")
-    
+        actividades = []
+        for actividad in db.get_activities(page_size=5):
+            _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
+            comuna = db.get_comuna_by_id(comuna_id)
+
+            actividades.append({"comuna": comuna,
+                                "sector": sector,
+                                "nombre": nombre,
+                                "email": email,
+                                "celular": celular,
+                                "fecha_inicio": fecha_inicio,
+                                "fecha_termino": fecha_termino,
+                                "descripcion": descripcion})
+            
+        return render_template("other/ver_actividades.html", actividades=actividades)
+
 @app.route("/estadisticas", methods = ["GET"])
 def estadisticas():
     if request.method == "GET": 

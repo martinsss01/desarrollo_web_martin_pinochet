@@ -1,10 +1,12 @@
 {
     "get_comuna_by_id": "SELECT id, nombre, region_id FROM comuna WHERE nombre=%s;",
     "create_activity": "INSERT INTO actividad (comuna_id, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
+    "get_activities": "SELECT * FROM actividad ORDER BY id DESC LIMIT %s;",
+    "get_id_by_comuna": "SELECT id, nombre, region_id FROM comuna where id=%s;",
+
 
     "get_user_by_email": "SELECT id, username, email, password FROM usuarios WHERE email=%s;",
     "get_user_by_username": "SELECT id, username, email, password FROM usuarios WHERE username=%s;",
-    "create_user": "INSERT INTO usuarios (username, password, email) VALUES (%s, %s, %s);",
-    "get_confessions": "SELECT * FROM confesiones ORDER BY id DESC LIMIT %s;"
+    "create_user": "INSERT INTO usuarios (username, password, email) VALUES (%s, %s, %s);"
     
 }

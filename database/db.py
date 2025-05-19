@@ -35,3 +35,17 @@ def create_activity(comuna, sector, nombre, email, celular, dia_hora_inicio, dia
 	cursor = conn.cursor()
 	cursor.execute(QUERY_DICT["create_activity"], (comuna, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion))
 	conn.commit()
+
+def get_activities(page_size):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_activities"], (page_size,))
+	activities = cursor.fetchall()
+	return activities
+
+def get_comuna_by_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_comuna_by_id"], (id, ))
+	comuna = cursor.fetchone()
+	return comuna
