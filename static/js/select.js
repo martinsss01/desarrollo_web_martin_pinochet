@@ -34,8 +34,8 @@ const updateCursos = () => {
 
 function changeArguments() {
   const courseSelect = document.getElementById("comuna");
-  const reasonLabel = document.querySelector("label[for='reason']");
-  const reasonTextarea = document.getElementById("comments");
+  const reasonLabel = document.querySelector("label[for='description']");
+  const reasonTextarea = document.getElementById("description");
   
   if (courseSelect.value !== "") {
       reasonLabel.style.display = "block";

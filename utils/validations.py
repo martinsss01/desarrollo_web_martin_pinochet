@@ -34,4 +34,10 @@ def validate_conf_img(conf_img):
     return True
     
 def validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
-    return validate_username(nombre) and validate_email(email) and validate_true(celular) and validate_true(fecha_inicio) and validate_true(fecha_termino) and validate_true(descripcion)
+    return (validate_username(nombre) 
+            and validate_email(email) 
+            and validate_true(celular) 
+            and validate_true(fecha_inicio) 
+            and validate_true(fecha_termino) 
+            and validate_true(descripcion)
+    )

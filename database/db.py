@@ -1,7 +1,5 @@
 import pymysql
 import json
-from sqlalchemy import create_engine, column, Integer, BigInteger, String, ForeignKey
-from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 
 DB_NAME = "tarea2"
 DB_USERNAME = "cc5002" 
@@ -32,8 +30,8 @@ def get_id_by_comuna(comuna):
 	id = cursor.fetchone()
 	return id
 
-def create_activity(comuna, sector, nombre, email, celular, fecha_inicio, fecha_final, descripcion):
+def create_activity(comuna, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion):
 	conn = get_conn()
 	cursor = conn.cursor()
-	cursor.execute(QUERY_DICT["create_activity"], (comuna, sector, nombre, email, celular, fecha_inicio, fecha_final, descripcion))
+	cursor.execute(QUERY_DICT["create_activity"], (comuna, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion))
 	conn.commit()

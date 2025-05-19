@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import hashlib
 import filetype
 import os
+import sys
 
 UPLOAD_FOLDER = 'static/uploads'
 
@@ -22,28 +23,21 @@ def index():
 def agregar_actividad():
     if request.method == "GET": 
         return render_template("other/agregar_actividad.html")
-
     if request.method == "POST": 
         nombre = request.form.get("nombre")
+        sector = request.form.get("sector")
         email = request.form.get("email")
-        celular = request.form.get("celular")
-        fecha_inicio = request.form.get("fecha_inicio")
-        fecha_termino = request.form.get("fecha_termino")
-        descripcion = request.form.get("descripcion")
+        celular = request.form.get("phone")
+        fecha_inicio = request.form.get("start-date")
+        fecha_termino = request.form.get("final-date")
+        descripcion = request.form.get("description")
         comuna = request.form.get("comuna")
-        id_comuna = db.get_id_by_comuna(comuna)
+        id_comuna,_,_ = db.get_id_by_comuna(comuna)
         region = request.form.get("region")
         error = ""
         if validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
-            status, msg = db.create_activity(id_comuna, region, nombre, email, celular, fecha_inicio, fecha_termino, descripcion)
-            if status:
-                print("VALIDADO!")
-                return redirect(url_for("ver_actividades"))
+            db.create_activity(id_comuna, sector, nombre, email, celular, fecha_inicio, fecha_termino,descripcion)
 
-            error += msg
-        else: 
-            error += "Uno de los campos no es valido."
-    
         return render_template('other/ver_actividades.html', error = error)
 
 @app.route("/ver_actividades", methods = ["GET"])

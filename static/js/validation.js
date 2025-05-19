@@ -33,8 +33,8 @@ const validateSelect = (select) => {
 const validateForm = () => {
   // obtener elementos del DOM usando el nombre del formulario.
   let myForm = document.forms["myForm"];
-  let organizer = myForm["organizer"].value;
-  let name = myForm["nombreActividad"].value;
+  let sector = myForm["sector"].value;
+  let name = myForm["nombre"].value;
   let files = myForm["files"].files;
   let region = myForm["region"].value;
   let comuna = myForm["comuna"].value;
@@ -51,8 +51,8 @@ const validateForm = () => {
   if (!validateName(name)) {
     setInvalidInput("Nombre de Actividad");
   }
-  if (!validateName(organizer)) {
-    setInvalidInput("Organizador");
+  if (!validateName(sector)) {
+    setInvalidInput("Sector");
   }
   if (!validateFiles(files)) {
     setInvalidInput("Archivos");

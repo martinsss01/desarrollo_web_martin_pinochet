@@ -1,6 +1,6 @@
 {
-    "get_comuna_by_id": "SELECT id, nombre FROM comuna WHERE id=%s;",
-    "create_activity": "INSERT INTO actividad (comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_final, descripcion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
+    "get_comuna_by_id": "SELECT id, nombre, region_id FROM comuna WHERE nombre=%s;",
+    "create_activity": "INSERT INTO actividad (comuna_id, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);",
 
     "get_user_by_email": "SELECT id, username, email, password FROM usuarios WHERE email=%s;",
     "get_user_by_username": "SELECT id, username, email, password FROM usuarios WHERE username=%s;",

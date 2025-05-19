@@ -3,7 +3,10 @@ Proyecto de semestre de Desarrollo de Aplicaciones Web
 
 ### Explicación de la idea
 
-Mi idea es hacer una plataforma que sea parecida a U-Cursos. Poder agregar actividades que sean evaluaciones, o eventos, y se pueda ver los detalles de cada una de estas actividades por separado.
+La idea es desarrollar un sistema de actividades a nivel nacional, para poder saber qué cosas hacer o qué eventos están próximos a los lugares que uno viaja.
+Se va a poder mantener abierto a todos los usuarios de la página, y cada actividad que se suba, se pasará por un filtro de otras personas para confirmar que la actividad realmente está pasando, y no son actividades falsas, o con malas intenciones.
 
-Por ahora en temas estéticos no se parece mucho, pero tengo la idea de adaptarlo más tarde en el desarrollo del proyecto. Por ahora tomé colores oscuros debido a que se me hace más agradable para ver en la pantalla.
-Partes que no supe escribir bien las hice con GitHub Copilot, o para hacerlas más bonitas, como por ejemplo, los gráficos de estadística.
+###### Nota
+
+Me ha resultado muy difícil entender bien cómo subir el form a la base de datos, pero recién me salió :D
+Necesito hacer las plantillas con Jinja para mostrar la información de la base de datos en la vista de ver_actividades, y ya está.

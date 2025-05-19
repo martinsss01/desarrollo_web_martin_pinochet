@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es-US">
 <head>
 	<title>Agregar actividad</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/form-styles.css') }}">
-
+    <meta charset="UTF-8">
 </head>
 <body>
     <div class ="header">
@@ -19,13 +19,13 @@
             <h2 id="val-msg"></h2>
             <ul id="val-list"></ul>
         </div>
-        <form name="myForm" method="post" enctype="multipart/form-data">
+        <form name="myForm" method="post" action="{{url_for('agregar_actividad')}}" enctype="multipart/form-data">
             <div class = "form-row">
-                <label for="nombreActividad">Nombre de actividad</label>
-                <input type="name" name="nombreActividad" id="nombreActividad" minlength="15" maxlength="80"><br>
+                <label for="nombre">Nombre de actividad</label>
+                <input type="text" name="nombre" id="nombre" minlength="15" maxlength="80"><br>
 
-                <label for="organizer">Organizador</label>
-                <input type="name" name="organizer" id="organizer" minlength="10"><br>
+                <label for="sector">Sector</label>
+                <input type="text" name="sector" id="sector" minlength="10"><br>
             </div>
             <div class = "form-row">
             
@@ -38,7 +38,7 @@
                 <input type="email" name="email" id="email" minlength="10" maxlength="80"><br>
 
                 <label for="phone">Número de teléfono</label>
-                <input type="name" name="phone" id="phone" minlength="10"><br>
+                <input type="tel" name="phone" id="phone" minlength="10"><br>
             </div>
 
             <div class="date-row">
@@ -53,19 +53,19 @@
             </div>    
 
             <div class="date-row">
-                <label for="region">Region</label>
+                <label for="region">Región</label>
                 <select name="region" id="region">
-                    <option value="">Seleccione un área</option>
+                    <option value="">Seleccione un región</option>
                 </select><br>
 
                 <label for="comuna">Comuna</label>
                 <select name="comuna" id="comuna">
-                    <option value="">Seleccione una sala</option>
+                    <option value="">Seleccione una comuna</option>
                 </select><br>
             </div>
 
-            <label for="reason" style="display: none;">Descripción</label>
-            <textarea name="comments" id="comments" rows="4" cols="50" style="display: none;"></textarea><br>
+            <label for="description" style="display: none;">Descripción</label>
+            <textarea name="description" id="description" rows="4" cols="50" style="display: none;"></textarea><br>
             
             <button id="submit-btn" type="button">Enviar</button>
         </form>
