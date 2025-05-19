@@ -1,10 +1,11 @@
 const data = {
-  "850": ["G303", "G304", "F10", "F11", "QP", "QO"],
-  "851": ["B01", "B02", "B03", "B04", "B05", "B06"]
+  "Región de Tarapacá": ["Camiña", "Huara", "Pozo Almonte", "Iquique", "Pica", "Colchane"],
+  "Región de Antofagasta": ["Tocopilla", "Maria Elena", "Ollague", "Calama", "San Pedro Atacama", "Sierra Gorda"],
+  "Región de Atacama": ["Diego de Almagro", "Chañaral", "Caldera", "Copiapo", "Tierra Amarilla", "Huasco"]
 };
 
 const poblarSalas = () => {
-    let departmentSelect = document.getElementById("select-area");
+    let departmentSelect = document.getElementById("region");
     for (const department in data) {
         let option = document.createElement("option");
         option.value = department;
@@ -14,11 +15,11 @@ const poblarSalas = () => {
 };
 
 const updateCursos = () => {
-    let departmentSelect = document.getElementById("select-area");
-    let courseSelect = document.getElementById("select-classroom");
+    let departmentSelect = document.getElementById("region");
+    let courseSelect = document.getElementById("comuna");
     let selectedDepartment = departmentSelect.value;
 
-    courseSelect.innerHTML = '<option value="">Seleccione una sala</option>';
+    courseSelect.innerHTML = '<option value="">Seleccione una region</option>';
 
     if (data[selectedDepartment]) {
         data[selectedDepartment].forEach(course => {
@@ -32,7 +33,7 @@ const updateCursos = () => {
 };
 
 function changeArguments() {
-  const courseSelect = document.getElementById("select-area");
+  const courseSelect = document.getElementById("comuna");
   const reasonLabel = document.querySelector("label[for='reason']");
   const reasonTextarea = document.getElementById("comments");
   
@@ -45,8 +46,8 @@ function changeArguments() {
   }
 }
 
-document.getElementById("select-area").addEventListener("change", updateCursos);
-document.getElementById("select-classroom").addEventListener("change", changeArguments);
+document.getElementById("region").addEventListener("change", updateCursos);
+document.getElementById("comuna").addEventListener("change", changeArguments);
 
 window.onload = () => {
   poblarSalas();

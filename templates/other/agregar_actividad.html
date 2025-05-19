@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Agregar actividad</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/form-styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/form-styles.css') }}">
 
 </head>
 <body>
@@ -10,7 +10,7 @@
     <h1 id="first_title"> Agregar actividad </h1>
     <nav>
         <ul>
-            <li><a href="../../index.html"> Volver </a></li>
+            <li><a href="{{ url_for('index') }}"> Volver </a></li>
         </ul>
     </nav>
     </div>
@@ -19,7 +19,7 @@
             <h2 id="val-msg"></h2>
             <ul id="val-list"></ul>
         </div>
-        <form name="myForm" method="post" action="{{url_for('post_activity')}}" enctype="multipart/form-data">
+        <form name="myForm" method="post" enctype="multipart/form-data">
             <div class = "form-row">
                 <label for="nombreActividad">Nombre de actividad</label>
                 <input type="name" name="nombreActividad" id="nombreActividad" minlength="15" maxlength="80"><br>
@@ -35,7 +35,7 @@
 
             <div class = "form-row">
                 <label for="email">Email</label>
-                <input type="name" name="email" id="email" minlength="10" maxlength="80"><br>
+                <input type="email" name="email" id="email" minlength="10" maxlength="80"><br>
 
                 <label for="phone">Número de teléfono</label>
                 <input type="name" name="phone" id="phone" minlength="10"><br>
@@ -70,7 +70,7 @@
             <button id="submit-btn" type="button">Enviar</button>
         </form>
     </div>
-    <script src="../js/select.js"></script>
-    <script src="../js/validation.js"></script>
+    <script src="{{ url_for('static', filename='js/select.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/validation.js')}}"></script>
 </body>
 </html>

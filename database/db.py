@@ -10,10 +10,8 @@ DB_HOST = "localhost"
 DB_PORT = 3306
 DB_CHARSET = "utf8"
 
-"""DATABASE_URL = f'{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
-
-engine = create_engine(DATABASE_URL, echo = False, future = True)
-SessionLocal = sessionmaker(bind=engine)"""
+with open('database/queries.json', 'r') as querys:
+	QUERY_DICT = json.load(querys)
 
 def get_conn():
 	conn = pymysql.connect(
@@ -26,8 +24,16 @@ def get_conn():
 	)
 	return conn
 
-def create_activity(conf_text, conf_img, user_id):
+
+def get_id_by_comuna(comuna):
 	conn = get_conn()
 	cursor = conn.cursor()
-	cursor.execute(QUERY_DICT["create_activity"], (conf_text, conf_img, user_id))
+	cursor.execute(QUERY_DICT["get_comuna_by_id"], (comuna, ))
+	id = cursor.fetchone()
+	return id
+
+def create_activity(comuna, sector, nombre, email, celular, fecha_inicio, fecha_final, descripcion):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["create_activity"], (comuna, sector, nombre, email, celular, fecha_inicio, fecha_final, descripcion))
 	conn.commit()

@@ -107,7 +107,7 @@ const validateForm = () => {
     submitButton.innerText = "Enviar";
     submitButton.style.marginRight = "10px";
     submitButton.addEventListener("click", () => {
-      // myForm.submit();
+      myForm.submit();
       // no tenemos un backend al cual enviarle los datos
     });
 

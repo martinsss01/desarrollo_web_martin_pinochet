@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarea 1</title>
-    <link rel="stylesheet" href="static/assets/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
 </head>
 <body>
     <h1 id="first_title">Bienvenido a mi página</h1>
     <nav>
         <ul>
-            <li><a href="static/html/agregar_actividad.html">Agregar evaluación</a></li>
-            <li><a href="static/html/ver_actividades.html">Ver evaluaciones</a></li>
-            <li><a href="static/html/estadisticas.html">Estadísticas</a></li>
+            <li><a href="{{ url_for('agregar_actividad')}}">Agregar evaluación</a></li>
+            <li><a href="{{ url_for('ver_actividades')}}">Ver evaluaciones</a></li>
+            <li><a href="{{ url_for('estadisticas')}}">Estadísticas</a></li>
         </ul>
     </nav>
 
@@ -30,7 +30,7 @@
                 </tr>
             </thead>
         <tbody>
-            <tr onclick=window.location.href="/static/activities/activity1.html" style="cursor: pointer;">
+            <tr onclick="window.location.href='/static/activities/activity1.html';" style="cursor: pointer;">
                 <td><a>Actividad 1</a></td>
                 <td>01/01/2025</td>
                 <td>Camiña</td>

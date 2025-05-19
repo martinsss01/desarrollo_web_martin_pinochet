@@ -13,7 +13,7 @@ def validate_password(value):
 def validate_email(value):
     return "@" in value
 
-def validate_conf_text(conf_text):
+def validate_true(text):
     return True
 
 def validate_conf_img(conf_img):
@@ -33,5 +33,5 @@ def validate_conf_img(conf_img):
         return False
     return True
     
-def validate_activity(conf_text, conf_img):
-    return validate_conf_text(conf_text) and validate_conf_img(conf_img)
+def validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
+    return validate_username(nombre) and validate_email(email) and validate_true(celular) and validate_true(fecha_inicio) and validate_true(fecha_termino) and validate_true(descripcion)
