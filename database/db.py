@@ -26,7 +26,7 @@ def get_conn():
 def get_id_by_comuna(comuna):
 	conn = get_conn()
 	cursor = conn.cursor()
-	cursor.execute(QUERY_DICT["get_comuna_by_id"], (comuna, ))
+	cursor.execute(QUERY_DICT["get_id_by_comuna"], (comuna, ))
 	id = cursor.fetchone()
 	return id
 
@@ -49,3 +49,10 @@ def get_comuna_by_id(id):
 	cursor.execute(QUERY_DICT["get_comuna_by_id"], (id, ))
 	comuna = cursor.fetchone()
 	return comuna
+
+def get_region_by_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_region_by_id"], (id, ))
+	region = cursor.fetchone()
+	return region

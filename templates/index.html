@@ -10,8 +10,8 @@
     <h1 id="first_title">Bienvenido a mi página</h1>
     <nav>
         <ul>
-            <li><a href="{{ url_for('agregar_actividad')}}">Agregar evaluación</a></li>
-            <li><a href="{{ url_for('ver_actividades')}}">Ver evaluaciones</a></li>
+            <li><a href="{{ url_for('agregar_actividad')}}">Agregar actividad</a></li>
+            <li><a href="{{ url_for('ver_actividades')}}">Ver actividades</a></li>
             <li><a href="{{ url_for('estadisticas')}}">Estadísticas</a></li>
         </ul>
     </nav>
@@ -30,47 +30,22 @@
                 </tr>
             </thead>
         <tbody>
-            <tr onclick="window.location.href='/static/activities/activity1.html';" style="cursor: pointer;">
-                <td><a>Actividad 1</a></td>
-                <td>01/01/2025</td>
-                <td>Camiña</td>
-                <td>2</td>
-                <td>Terminado</td>
-                <td><img alt="Purple sky besides a train rail" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpreview.redd.it%2Fkxov0rcoi4p21.png%3Fauto%3Dwebp%26s%3D8edd6e729acc84e01d55ad0853c7d5c07d86bada&f=1&nofb=1&ipt=0ce59f866c4d1759c6ef1ecef58b192e4ef57725315fd6fa5b60a94b62a14edc&ipo=images"> </td>
-            </tr>
-            <tr onclick="window.location.href='static/html/activities/activity2.html';" style="cursor: pointer;">
-                <td><a>Actividad 2</a></td>
-                <td>29/02/2025</td>
-                <td>Huara</td>
-                <td>5</td>
-                <td>Pendiente</td>
-                <td><img alt="Neighborhood" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.hdqwalls.com%2Fwallpapers%2Flate-afternoon-pixel-art-71.jpg&f=1&nofb=1&ipt=3242922254404ef0959b31dde13712ab9a899b472fbadd4846dd90d772f8db5f&ipo=images"> </td>
-            </tr>
-            <tr onclick="window.location.href='static/html/activities/activity3.html';" style="cursor: pointer;">
-                <td><a>Actividad 3</a></td>
-                <td>15/06/2023</td>
-                <td>Pozo Almonte</td>
-                <td>15</td>
-                <td>Terminado</td>
-                <td><img alt="Beautiful Valley" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2FEFXSes9UCfsyRVoNeQ2ZTB.png&f=1&nofb=1&ipt=65be8d4bdd871df3e967d75560eb0f2ff324778f065ca2b5afe174a25a88a9a7&ipo=images"> </td>
-            </tr>
-            <tr onclick="window.location.href='static/html/activities/activity4.html';" style="cursor: pointer;">
-                <td><a>Actividad 4</a></td>
-                <td>10/03/2010</td>
-                <td>Iquique</td>
-                <td>1</td>
-                <td>Terminado</td>
-                <td><img alt="River in between mountains" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fk4jigv2dgci51.png&f=1&nofb=1&ipt=1b447a087f0ee58ad231eae2deda544d7d88ea9b767017a7bdbeb5c525a7083d&ipo=images"> </td>
-            </tr>
-            <tr onclick="window.location.href='static/html/activities/activity5.html';" style="cursor: pointer;">
-                <!-- life lol -->
-                <td><a>Actividad 5</a></td>
-                <td>01/04/2002</td>
-                <td>-</td>
-                <td>1</td>
-                <td>En Proceso</td>
-                <td><img alt="Lake with mountain view" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.creativefabrica.com%2Fwp-content%2Fuploads%2F2023%2F01%2F31%2FMountain-Lake-Landscape-Pixel-Art-Graphics-59572888-1.jpg&f=1&nofb=1&ipt=51ff85eee324af35320c7209250facdb8dca45d9db47b989d09637152c84c71c&ipo=images" > </td>
-            </tr>
+            {% if actividades %}
+                {% for actividad in actividades %}
+                    <tr>
+                        <td>{{actividad.region}}</td>
+                        <td>{{actividad.comuna}}</td>
+                        <td>{{actividad.sector}}</td>
+                        <td>{{actividad.nombre}}</td>
+                        <td>{{actividad.email}}</td>
+                        <td>{{actividad.celular}}</td>
+                        <td>{{actividad.fecha_inicio}}</td>
+                        <td>{{actividad.fecha_termino}}</td>
+                        <td>{{actividad.descripcion}}</td>
+                        <td><img class="expandable" alt="Purple sky besides a train rail" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpreview.redd.it%2Fkxov0rcoi4p21.png%3Fauto%3Dwebp%26s%3D8edd6e729acc84e01d55ad0853c7d5c07d86bada&f=1&nofb=1&ipt=0ce59f866c4d1759c6ef1ecef58b192e4ef57725315fd6fa5b60a94b62a14edc&ipo=images" onclick="toggleExpand(this)"> </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
         </tbody>
         </table>
     </div>

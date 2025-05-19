@@ -17,7 +17,24 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html")
+    if request.method == "GET": 
+        actividades = []
+        for actividad in db.get_activities(page_size=5):
+            _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
+            _, comuna, region_id = db.get_comuna_by_id(comuna_id)
+            _, region = db.get_region_by_id(region_id)
+
+            actividades.append({"region": region,
+                                "comuna": comuna,
+                                "sector": sector,
+                                "nombre": nombre,
+                                "email": email,
+                                "celular": celular,
+                                "fecha_inicio": fecha_inicio,
+                                "fecha_termino": fecha_termino,
+                                "descripcion": descripcion})
+            
+        return render_template("index.html", actividades=actividades)
 
 @app.route("/agregar_actividad", methods = ["POST","GET"])
 def agregar_actividad():
@@ -44,11 +61,13 @@ def agregar_actividad():
 def ver_actividades():
     if request.method == "GET": 
         actividades = []
-        for actividad in db.get_activities(page_size=5):
+        for actividad in db.get_activities(page_size=10):
             _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
-            comuna = db.get_comuna_by_id(comuna_id)
+            _, comuna, region_id = db.get_comuna_by_id(comuna_id)
+            _, region = db.get_region_by_id(region_id)
 
-            actividades.append({"comuna": comuna,
+            actividades.append({"region": region,
+                                "comuna": comuna,
                                 "sector": sector,
                                 "nombre": nombre,
                                 "email": email,
