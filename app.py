@@ -50,10 +50,23 @@ def agregar_actividad():
         descripcion = request.form.get("description")
         comuna = request.form.get("comuna")
         id_comuna,_,_ = db.get_id_by_comuna(comuna)
+        img = request.files.get('files')
+
+        _filename = hashlib.sha256(
+            secure_filename(img.filename) # nombre del archivo
+            .encode("utf-8") # encodear a bytes
+            ).hexdigest()
+        _extension = filetype.guess(img).extension
+
+        img_filename = f"{_filename}.{_extension}"
+
+        img.save(os.path.join(app.config["UPLOAD_FOLDER"], img_filename))
+
         region = request.form.get("region")
         error = ""
         if validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
             db.create_activity(id_comuna, sector, nombre, email, celular, fecha_inicio, fecha_termino,descripcion)
+            db.create_photo("static/uploads", img_filename, 2)
 
         return redirect('/ver_actividades')
 
@@ -62,9 +75,12 @@ def ver_actividades():
     if request.method == "GET": 
         actividades = []
         for actividad in db.get_activities(page_size=10):
-            _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
+            act_id, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
             _, comuna, region_id = db.get_comuna_by_id(comuna_id)
             _, region = db.get_region_by_id(region_id)
+            _, _, nombre_archivo, _ = db.get_photo_by_act_id(13)
+            
+            img_filename = f"uploads/{nombre_archivo}"
 
             actividades.append({"region": region,
                                 "comuna": comuna,
@@ -74,7 +90,8 @@ def ver_actividades():
                                 "celular": celular,
                                 "fecha_inicio": fecha_inicio,
                                 "fecha_termino": fecha_termino,
-                                "descripcion": descripcion})
+                                "descripcion": descripcion,
+                                "foto": url_for('static', filename=img_filename)})
             
         return render_template("other/ver_actividades.html", actividades=actividades)
 

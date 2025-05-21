@@ -56,3 +56,16 @@ def get_region_by_id(id):
 	cursor.execute(QUERY_DICT["get_region_by_id"], (id, ))
 	region = cursor.fetchone()
 	return region
+
+def create_photo(path, name, activity_id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["create_photo"], (path,name,activity_id))
+	conn.commit()
+
+def get_photo_by_act_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_photo_by_act_id"], (id,))
+	photo = cursor.fetchone()
+	return photo

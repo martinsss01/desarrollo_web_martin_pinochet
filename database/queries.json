@@ -4,6 +4,8 @@
     "get_activities": "SELECT * FROM actividad ORDER BY id DESC LIMIT %s;",
     "get_comuna_by_id": "SELECT id, nombre, region_id FROM comuna where id=%s;",
     "get_region_by_id": "SELECT id, nombre FROM region where id=%s;",
+    "create_photo": "INSERT INTO foto (ruta_archivo, nombre_archivo, actividad_id) VALUES (%s, %s, %s);",
+    "get_photo_by_act_id": "SELECT id, ruta_archivo, nombre_archivo, actividad_id FROM foto WHERE actividad_id=%s",
 
     "get_user_by_email": "SELECT id, username, email, password FROM usuarios WHERE email=%s;",
     "get_user_by_username": "SELECT id, username, email, password FROM usuarios WHERE username=%s;",

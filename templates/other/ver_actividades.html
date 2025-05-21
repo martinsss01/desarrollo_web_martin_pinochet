@@ -43,7 +43,7 @@
                         <td>{{actividad.fecha_inicio}}</td>
                         <td>{{actividad.fecha_termino}}</td>
                         <td>{{actividad.descripcion}}</td>
-                        <td><img class="expandable" alt="Purple sky besides a train rail" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpreview.redd.it%2Fkxov0rcoi4p21.png%3Fauto%3Dwebp%26s%3D8edd6e729acc84e01d55ad0853c7d5c07d86bada&f=1&nofb=1&ipt=0ce59f866c4d1759c6ef1ecef58b192e4ef57725315fd6fa5b60a94b62a14edc&ipo=images" onclick="toggleExpand(this)"> </td>
+                        <td><img src = "{{actividad.foto}}" class="expandable" onclick="toggleExpand(this)"></td>
                     </tr>
                 {% endfor %}
             {% endif %}
