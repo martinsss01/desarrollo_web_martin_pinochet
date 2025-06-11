@@ -33,7 +33,7 @@
             {% if actividades %}
                 {% for actividad in actividades %}
                     <tr>
-                        <td>{{actividad.nombre}}</td>
+                        <td><a href="{{ url_for('actividad', num = actividad.num ) }}"> {{actividad.nombre}} </a></td>
                         <td>{{actividad.fecha_inicio}}</td>
                         <td>{{actividad.comuna}}</td>
                         <td>{{actividad.sector}}</td>

@@ -20,13 +20,14 @@ def index():
     if request.method == "GET": 
         actividades = []
         for actividad in db.get_5_activities(page_size=5):
-            act_id, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
+            num, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
             _, comuna, region_id = db.get_comuna_by_id(comuna_id)
             _, region = db.get_region_by_id(region_id)
-            _, ruta_archivo, nombre_archivo, _ = db.get_photo_by_act_id(act_id)
+            _, ruta_archivo, nombre_archivo, _ = db.get_photo_by_act_id(num)
             img_filename = f"uploads/{nombre_archivo}"
             
-            actividades.append({"region": region,
+            actividades.append({"num": num,
+                                "region": region,
                                 "comuna": comuna,
                                 "sector": sector,
                                 "nombre": nombre,
