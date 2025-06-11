@@ -36,10 +36,17 @@ def create_activity(comuna, sector, nombre, email, celular, dia_hora_inicio, dia
 	cursor.execute(QUERY_DICT["create_activity"], (comuna, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion))
 	conn.commit()
 
-def get_activities(page_size):
+def get_5_activities(page_size=5):
 	conn = get_conn()
 	cursor = conn.cursor()
-	cursor.execute(QUERY_DICT["get_activities"], (page_size,))
+	cursor.execute(QUERY_DICT["get_5_activities"], (page_size,))
+	activities = cursor.fetchall()
+	return activities
+
+def get_all_activities():
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_all_activities"])
 	activities = cursor.fetchall()
 	return activities
 
@@ -69,3 +76,10 @@ def get_photo_by_act_id(id):
 	cursor.execute(QUERY_DICT["get_photo_by_act_id"], (id,))
 	photo = cursor.fetchone()
 	return photo
+
+def get_activity_id_by_name(name):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_activity_id_by_name"], (name,))
+	activity_id = cursor.fetchone()
+	return activity_id

@@ -19,11 +19,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     if request.method == "GET": 
         actividades = []
-        for actividad in db.get_activities(page_size=5):
-            _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
+        for actividad in db.get_5_activities(page_size=5):
+            act_id, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
             _, comuna, region_id = db.get_comuna_by_id(comuna_id)
             _, region = db.get_region_by_id(region_id)
-
+            _, ruta_archivo, nombre_archivo, _ = db.get_photo_by_act_id(act_id)
+            img_filename = f"uploads/{nombre_archivo}"
+            
             actividades.append({"region": region,
                                 "comuna": comuna,
                                 "sector": sector,
@@ -32,7 +34,9 @@ def index():
                                 "celular": celular,
                                 "fecha_inicio": fecha_inicio,
                                 "fecha_termino": fecha_termino,
-                                "descripcion": descripcion})
+                                "descripcion": descripcion,
+                                "foto": url_for('static', filename=img_filename)
+                                })
             
         return render_template("index.html", actividades=actividades)
 
@@ -66,22 +70,23 @@ def agregar_actividad():
         error = ""
         if validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
             db.create_activity(id_comuna, sector, nombre, email, celular, fecha_inicio, fecha_termino,descripcion)
-            db.create_photo("static/uploads", img_filename, 2)
+            id = db.get_activity_id_by_name(nombre)
+            db.create_photo(f"static/uploads/{img_filename}", img_filename, id)
 
-        return redirect('/ver_actividades')
+        return redirect('/ver_actividades/page1')
 
-@app.route("/ver_actividades", methods = ["GET"])
-def ver_actividades():
+@app.route("/ver_actividades/page<int:page>", methods = ["GET"])
+def ver_actividades(page=1):
     if request.method == "GET": 
         actividades = []
-        for actividad in db.get_activities(page_size=10):
+        for actividad in db.get_all_activities()[5*(page-1):5*page]:
             act_id, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
             _, comuna, region_id = db.get_comuna_by_id(comuna_id)
             _, region = db.get_region_by_id(region_id)
-            _, _, nombre_archivo, _ = db.get_photo_by_act_id(13)
+            _, _, nombre_archivo, _ = db.get_photo_by_act_id(act_id)
             
             img_filename = f"uploads/{nombre_archivo}"
-
+            
             actividades.append({"region": region,
                                 "comuna": comuna,
                                 "sector": sector,
@@ -91,9 +96,11 @@ def ver_actividades():
                                 "fecha_inicio": fecha_inicio,
                                 "fecha_termino": fecha_termino,
                                 "descripcion": descripcion,
-                                "foto": url_for('static', filename=img_filename)})
+                                "foto": url_for('static', filename=img_filename)
+                                })
+                                
             
-        return render_template("other/ver_actividades.html", actividades=actividades)
+        return render_template("other/ver_actividades.html", actividades=actividades, page=page, total_pages=len(db.get_all_activities())//5 + 1)
 
 @app.route("/estadisticas", methods = ["GET"])
 def estadisticas():
