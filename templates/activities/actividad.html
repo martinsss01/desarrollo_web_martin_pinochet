@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nombre }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+</head>
+<body>
+    <h1 id="first_title">Actividad {{ num }}</h1>
+    <nav>
+        <ul>
+            <li><a href="/"> Volver</a></li>
+        </ul>
+    </nav>
+    <table>
+    <thead>
+        <tr>
+            <th><b>Región</b></th>
+            <th><b>Comuna</b></th>
+            <th><b>Sector</b></th>
+            <th><b>Nombre</b></th>
+            <th><b>Email</b></th>
+            <th><b>Celular</b></th>
+            <th><b>Fecha Inicio</b></th>
+            <th><b>Fecha Termino</b></th>
+            <th><b>Descripción</b></th>
+            <th><b>Foto</b></th>
+        </tr>
+    </thead>
+    {% if actividad %}
+        <tr>
+            <td>{{actividad.region}}</td>
+            <td>{{actividad.comuna}}</td>
+            <td>{{actividad.sector}}</td>
+            <td>{{actividad.nombre}}</td>
+            <td>{{actividad.email}}</td>
+            <td>{{actividad.celular}}</td>
+            <td>{{actividad.fecha_inicio}}</td>
+            <td>{{actividad.fecha_termino}}</td>
+            <td>{{actividad.descripcion}}</td>
+            <td><img src = "{{actividad.foto}}" alt="Placeholder Image" class="expandable" onclick="toggleExpand(this)"></td>
+        </tr>
+    {% endif %}
+    </table>
+    <script>
+        function toggleExpand(img) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+    
+            modal.style.display = "flex"; // Show the modal
+            modalImage.src = img.src; // Set the modal image source to the clicked image
+        }
+    
+        function closeImageModal() {
+        const modal = document.getElementById("imageModal");
+        modal.style.display = "none"; // Hide the modal
+    }
+    </script>
+</body>
+</html>

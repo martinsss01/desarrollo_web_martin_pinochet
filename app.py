@@ -107,6 +107,31 @@ def estadisticas():
     if request.method == "GET": 
         return render_template("other/estadisticas.html")
 
+
+@app.route("/actividad<int:num>", methods = ["GET"])
+def actividad(num):
+    if request.method == "GET": 
+        _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = db.get_activity_by_id(num)
+        _, comuna, region_id = db.get_comuna_by_id(comuna_id)
+        _, region = db.get_region_by_id(region_id)
+        _, _, nombre_archivo, _ = db.get_photo_by_act_id(num)
+        
+        img_filename = f"uploads/{nombre_archivo}"
+        
+        actividad ={"region": region,
+                "comuna": comuna,
+                "sector": sector,
+                "nombre": nombre,
+                "email": email,
+                "celular": celular,
+                "fecha_inicio": fecha_inicio,
+                "fecha_termino": fecha_termino,
+                "descripcion": descripcion,
+                "foto": url_for('static', filename=img_filename)
+                }
+        
+        return render_template("activities/actividad.html", actividad=actividad, num=num, name=nombre)
+
 if __name__ == "__main__":
     app.run(debug=True)
         

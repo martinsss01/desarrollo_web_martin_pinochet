@@ -83,3 +83,10 @@ def get_activity_id_by_name(name):
 	cursor.execute(QUERY_DICT["get_activity_id_by_name"], (name,))
 	activity_id = cursor.fetchone()
 	return activity_id
+
+def get_activity_by_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_activity_by_id"], (id,))
+	activity = cursor.fetchone()
+	return activity
