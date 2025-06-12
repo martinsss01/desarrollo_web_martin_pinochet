@@ -106,7 +106,8 @@ def ver_actividades(page=1):
                                 "fecha_inicio": fecha_inicio,
                                 "fecha_termino": fecha_termino,
                                 "descripcion": descripcion,
-                                "foto": url_for('static', filename=img_filename)
+                                "foto": url_for('static', filename=img_filename),
+                                "num": act_id
                                 })
                                 
             

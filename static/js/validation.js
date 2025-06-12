@@ -148,8 +148,6 @@ submitBtn.addEventListener("click", validateForm);
 document.getElementById('submit-btn').addEventListener('click', function (e) {
     const startDate = document.getElementById('start-date').value;
     const endDate = document.getElementById('final-date').value;
-    const startTime = document.getElementById('start-time').value;
-    const endTime = document.getElementById('final-time').value;
 
     if (startDate && endDate) {
         const start = new Date(startDate);
@@ -168,10 +166,6 @@ document.getElementById('submit-btn').addEventListener('click', function (e) {
 
 document.getElementById('start-date').addEventListener('change', function () {
     document.getElementById('final-date').min = this.value;
-});
-
-document.getElementById('start-time').addEventListener('change', function () {
-  document.getElementById('final-time').min = this.value;
 });
 
 
