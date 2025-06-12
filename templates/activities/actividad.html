@@ -24,6 +24,9 @@
             <th><b>Celular</b></th>
             <th><b>Fecha Inicio</b></th>
             <th><b>Fecha Termino</b></th>
+            <th><b>Tema</b></th>
+            <th><b>Otro</b></th>
+            <th><b>Contacto</b></th>
             <th><b>Descripción</b></th>
             <th><b>Foto</b></th>
         </tr>
@@ -38,6 +41,9 @@
             <td>{{actividad.celular}}</td>
             <td>{{actividad.fecha_inicio}}</td>
             <td>{{actividad.fecha_termino}}</td>
+            <td>{{actividad.tema}}</td>
+            <td>{{actividad.otro}}</td>
+            <td>{{actividad.social}}: {{actividad.cuenta}}</td>
             <td>{{actividad.descripcion}}</td>
             <td><img src = "{{actividad.foto}}" alt="Placeholder Image" class="expandable" onclick="toggleExpand(this)"></td>
         </tr>

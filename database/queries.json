@@ -13,6 +13,8 @@
     "get_photo_by_act_id": "SELECT id, ruta_archivo, nombre_archivo, actividad_id FROM foto WHERE actividad_id=%s",
     "get_activity_id_by_name": "SELECT id FROM actividad WHERE nombre=%s;",
     "get_activity_by_id": "SELECT * FROM actividad WHERE id=%s;",
+    "get_tema_by_act_id": "SELECT id, tema, glosa_otro, actividad_id FROM actividad_tema WHERE actividad_id=%s;",
+    "get_contacto_by_act_id": "SELECT id, nombre, identificador, actividad_id FROM contactar_por WHERE actividad_id=%s;",
 
     "get_user_by_email": "SELECT id, username, email, password FROM usuarios WHERE email=%s;",
     "get_user_by_username": "SELECT id, username, email, password FROM usuarios WHERE username=%s;",

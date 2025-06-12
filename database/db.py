@@ -101,3 +101,17 @@ def get_activity_by_id(id):
 	cursor.execute(QUERY_DICT["get_activity_by_id"], (id,))
 	activity = cursor.fetchone()
 	return activity
+
+def get_tema_by_act_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_tema_by_act_id"], (id,))
+	tema = cursor.fetchone()
+	return tema
+
+def get_contacto_by_act_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_contacto_by_act_id"], (id,))
+	contacto = cursor.fetchone()
+	return contacto

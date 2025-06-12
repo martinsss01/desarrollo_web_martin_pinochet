@@ -125,7 +125,8 @@ def actividad(num):
         _, comuna, region_id = db.get_comuna_by_id(comuna_id)
         _, region = db.get_region_by_id(region_id)
         _, _, nombre_archivo, _ = db.get_photo_by_act_id(num)
-        
+        _, tema, otro, _ = db.get_tema_by_act_id(num)
+        _, social, cuenta, _ = db.get_contacto_by_act_id(num)
         img_filename = f"uploads/{nombre_archivo}"
         
         actividad ={"region": region,
@@ -136,7 +137,12 @@ def actividad(num):
                 "celular": celular,
                 "fecha_inicio": fecha_inicio,
                 "fecha_termino": fecha_termino,
+                "tema": tema,
+                "otro": otro,
+                "social": social,
+                "cuenta": cuenta,
                 "descripcion": descripcion,
+
                 "foto": url_for('static', filename=img_filename)
                 }
         
