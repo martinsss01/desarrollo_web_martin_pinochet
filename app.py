@@ -47,13 +47,20 @@ def agregar_actividad():
         return render_template("other/agregar_actividad.html")
     if request.method == "POST": 
         nombre = request.form.get("nombre")
+        comuna = request.form.get("comuna")
         sector = request.form.get("sector")
         email = request.form.get("email")
         celular = request.form.get("phone")
         fecha_inicio = request.form.get("start-date")
         fecha_termino = request.form.get("final-date")
         descripcion = request.form.get("description")
-        comuna = request.form.get("comuna")
+        tema = request.form.get("tema")
+        otro = request.form.get("otro")
+        hora_inicio = request.form.get("start-time")
+        hora_termino = request.form.get("final-time")
+        social = request.form.get("social")
+        cuenta = request.form.get("cuenta")
+
         id_comuna,_,_ = db.get_id_by_comuna(comuna)
         img = request.files.get('files')
 
@@ -73,6 +80,8 @@ def agregar_actividad():
             db.create_activity(id_comuna, sector, nombre, email, celular, fecha_inicio, fecha_termino,descripcion)
             id = db.get_activity_id_by_name(nombre)
             db.create_photo(f"static/uploads/{img_filename}", img_filename, id)
+            db.create_contacto(social, cuenta, id)
+            db.create_tema(tema, otro, id)
 
         return redirect('/ver_actividades/page1')
 

@@ -22,7 +22,6 @@ def get_conn():
 	)
 	return conn
 
-
 def get_id_by_comuna(comuna):
 	conn = get_conn()
 	cursor = conn.cursor()
@@ -34,6 +33,18 @@ def create_activity(comuna, sector, nombre, email, celular, dia_hora_inicio, dia
 	conn = get_conn()
 	cursor = conn.cursor()
 	cursor.execute(QUERY_DICT["create_activity"], (comuna, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion))
+	conn.commit()
+
+def create_tema(tema, otro, act_id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["create_tema"], (tema, otro, act_id))
+	conn.commit()
+
+def create_contacto(nombre, id, act_id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["create_contacto"], (nombre, id, act_id))
 	conn.commit()
 
 def get_5_activities(page_size=5):

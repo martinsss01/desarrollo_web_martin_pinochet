@@ -21,52 +21,73 @@
         </div>
         <form name="myForm" method="post" action="{{url_for('agregar_actividad')}}" enctype="multipart/form-data">
             <div class = "form-row">
-                <label for="nombre">Nombre de actividad</label>
+                <label for="nombre">Nombre de actividad: </label>
                 <input type="text" name="nombre" id="nombre" minlength="15" maxlength="80"><br>
+                
+                <label for="tema">Tema: </label>
+                <select name="tema" id="tema"> <!-- NUEVO -->
+                    <option value="">Seleccione un tema</option>
+                </select><br>
 
-                <label for="sector">Sector</label>
-                <input type="text" name="sector" id="sector" minlength="10"><br>
+                <label for="otro" style="display: none;">Otro: </label> <!-- NUEVO -->
+                <input type="text" name="otro" id="otro" style="display: none;"></input><br>
             </div>
             <div class = "form-row">
             
-            <label for="files">Archivos adjuntos (hasta 5)</label>
+            <label for="files">Archivos adjuntos (hasta 5):</label>
             <input type="file" name="files" id="files" multiple accept="image/*,.pdf"><br>
             </div>
 
             <div class = "form-row">
-                <label for="email">Email</label>
+                <label for="email">Email: </label>
                 <input type="email" name="email" id="email" minlength="10" maxlength="80"><br>
 
-                <label for="phone">Número de teléfono</label>
+                <label for="phone">Número de teléfono: </label>
                 <input type="tel" name="phone" id="phone" minlength="10"><br>
             </div>
 
             <div class="date-row">
             <div>
-                <label for="start-date">Fecha de inicio</label>
+                <label for="start-date">Fecha de inicio: </label>
                 <input type="date" name="start-date" id="start-date"><br>
+                <label for="start-time">Hora de inicio: </label> <!-- NUEVO -->
+                <input type="time" name="start-time" id="start-time"><br>
             </div>
             <div>
-                <label for="final-date">Fecha final</label>
+                <label for="final-date">Fecha de término: </label>
                 <input type="date" name="final-date" id="final-date"><br>
+                <label for="final-time">Hora de término: </label> <!-- NUEVO -->
+                <input type="time" name="final-time" id="final-time"><br>
             </div>
             </div>    
 
             <div class="date-row">
-                <label for="region">Región</label>
+                <label for="region">Región: </label>
                 <select name="region" id="region">
                     <option value="">Seleccione un región</option>
                 </select><br>
 
-                <label for="comuna">Comuna</label>
+                <label for="comuna">Comuna: </label>
                 <select name="comuna" id="comuna">
                     <option value="">Seleccione una comuna</option>
                 </select><br>
+
+                <label for="sector">Sector</label>
+                <input type="text" name="sector" id="sector" minlength="10"><br>
             </div>
 
             <label for="description" style="display: none;">Descripción</label>
             <textarea name="description" id="description" rows="4" cols="50" style="display: none;"></textarea><br>
             
+            <div class="form-row">
+                <label for="social">Contacto</label> <!-- NUEVO -->
+                <select name="social" id="social">
+                    <option value="">Seleccione una red social</option>
+                </select><br>
+                <label for="cuenta">Cuenta</label> <!-- NUEVO -->
+                <input type="text" name="cuenta" id="cuenta" minlength=""><br>
+            </div>
+
             <button id="submit-btn" type="button">Enviar</button>
         </form>
     </div>

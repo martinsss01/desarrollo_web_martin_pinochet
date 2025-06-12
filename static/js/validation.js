@@ -10,7 +10,7 @@ const validateFiles = (files) => {
   if (!files) return false;
 
   // validación del número de archivos
-  let lengthValid = 0 <= files.length && files.length <= 5;
+  let lengthValid = 1 <= files.length && files.length <= 5;
 
   // validación del tipo de archivo
   let typeValid = true;
@@ -39,6 +39,9 @@ const validateForm = () => {
   let region = myForm["region"].value;
   let comuna = myForm["comuna"].value;
   let email = myForm["email"].value;
+  let theme = myForm["tema"].value;
+  let social = myForm["social"].value;
+  let account = myForm["cuenta"].value;
   // variables auxiliares de validación y función.
   let invalidInputs = [];
   let isValid = true;
@@ -65,6 +68,15 @@ const validateForm = () => {
   }
   if (!validateEmail(email)) {
     setInvalidInput("Email");
+  }
+  if (!validateSelect(theme)) {
+    setInvalidInput("Tema");
+  }
+  if (!validateSelect(social)) {
+    setInvalidInput("Redes Sociales");
+  }
+  if (!validateName(account)) {
+    setInvalidInput("Nombre de Cuenta / Número de contacto");
   }
 
   // finalmente mostrar la validación
@@ -136,13 +148,18 @@ submitBtn.addEventListener("click", validateForm);
 document.getElementById('submit-btn').addEventListener('click', function (e) {
     const startDate = document.getElementById('start-date').value;
     const endDate = document.getElementById('final-date').value;
+    const startTime = document.getElementById('start-time').value;
+    const endTime = document.getElementById('final-time').value;
 
     if (startDate && endDate) {
         const start = new Date(startDate);
         const end = new Date(endDate);
-
-        if (end <= start) {
+        if (end < start) {
             alert('La fecha final debe ser posterior a la fecha de inicio.');
+            return;
+        }
+        else if (end === start && endTime < startTime) {
+            alert('La hora final debe ser posterior a la hora de inicio.');
             return;
         }
     }
@@ -151,6 +168,10 @@ document.getElementById('submit-btn').addEventListener('click', function (e) {
 
 document.getElementById('start-date').addEventListener('change', function () {
     document.getElementById('final-date').min = this.value;
+});
+
+document.getElementById('start-time').addEventListener('change', function () {
+  document.getElementById('final-time').min = this.value;
 });
 
 

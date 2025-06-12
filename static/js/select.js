@@ -16,7 +16,33 @@ const data = {
   "Región Aysén del General Carlos Ibáñez del Campo": ["Coihaique", "Lago Verde", "Aysén", "Cisnes", "Guaitecas", "Cochrane", "O'Higgins", "Tortel", "Chile Chico", "Río Ibáñez"],
   "Región de Magallanes y de la Antártica Chilena": ["Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos", "Antártica", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"]
 }
+const temas = ["Música", "Deportes", "Ciencias", 
+  "Religión", "Política", "Tecnología", 
+  "Arte", "Juegos", "Baile", 
+  "Comida", "Otros"];
 
+const socials = ["WhatsApp", "Facebook", "Instagram", "Twitter",
+    "LinkedIn", "Bluesky", "Mastodon", 
+    "TikTok", "YouTube", "Telegram"];
+
+const poblarTemas = () => {
+  let themeSelect = document.getElementById("tema");
+  for (const tema of temas) {
+    let option = document.createElement("option");
+    option.value = tema;
+    option.text = tema;
+    themeSelect.appendChild(option);
+  }
+}
+const poblarSocials = () => {
+  let socialSelect = document.getElementById("social");
+  for (const social of socials) {
+    let option = document.createElement("option");
+    option.value = social;
+    option.text = social;
+    socialSelect.appendChild(option);
+  }
+}
 
 const poblarSalas = () => {
     let departmentSelect = document.getElementById("region");
@@ -33,7 +59,7 @@ const updateCursos = () => {
     let courseSelect = document.getElementById("comuna");
     let selectedDepartment = departmentSelect.value;
 
-    courseSelect.innerHTML = '<option value="">Seleccione una region</option>';
+    courseSelect.innerHTML = '<option value="">Seleccione una comuna</option>';
 
     if (data[selectedDepartment]) {
         data[selectedDepartment].forEach(course => {
@@ -60,10 +86,28 @@ function changeArguments() {
   }
 }
 
+function showOtro() {
+  const otroInput = document.getElementById("otro");
+  const temaSelect = document.getElementById("tema");
+  const reasonLabel = document.querySelector("label[for='otro']");
+
+  if (temaSelect.value !== "") {
+    reasonLabel.style.display = "block";
+    otroInput.style.display = "block";
+  } else {
+    reasonLabel.style.display = "none";
+    otroInput.style.display = "none";
+  }
+}
+
 document.getElementById("region").addEventListener("change", updateCursos);
 document.getElementById("comuna").addEventListener("change", changeArguments);
+document.getElementById("tema").addEventListener("change", showOtro);
 
 window.onload = () => {
   poblarSalas();
+  poblarSocials();
+  poblarTemas();
+  showOtro();
   changeArguments();
 };
