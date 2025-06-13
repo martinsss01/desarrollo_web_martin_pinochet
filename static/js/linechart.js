@@ -1,9 +1,8 @@
 let makeLineChart = (input) => {
-    const ctx = document.getElementById('lineChart').getContext('2d');
     const labelsArray = [];
     const dataArray = [];
 
-    for (let i = 0; i < pairs.length; i++) {
+    for (let i = 0; i < input.length; i++) {
         const [a, b] = pairs[i];
         labelsArray.push(a);
         dataArray.push(b);
@@ -49,14 +48,14 @@ let makeLineChart = (input) => {
     }
 
 
-let showLineChart = () => {
+let showLineChart = (ctx) => {
     url = '/estadisticas/conteo_actividades';
     fetch(url)
     .then(response => response.json())
     .then((ajaxResponse) => {
         if (ajaxResponse["status"] === "success") {
             console.log(ajaxResponse);
-            populateLineChart(ajaxResponse["data"]);
+            makeLineChart(ajaxResponse["data"]);
         } else {
             console.error("Error fetching line chart data:", ajaxResponse["message"]);
         }
@@ -64,5 +63,6 @@ let showLineChart = () => {
 }
 
 window.onload = () => {
-    makeLineChart();
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    showLineChart();
 }
