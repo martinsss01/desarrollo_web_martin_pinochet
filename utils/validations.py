@@ -53,8 +53,7 @@ def validate_conf_img(conf_img):
     
 def validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcion):
     return (validate_username(nombre) 
-            and validate_email(email) 
-            and validate_phone_number(celular) 
+            and validate_email(email)
             and validate_description(descripcion)
     )
 '''and validate_dates(fecha_inicio,fecha_termino)'''
