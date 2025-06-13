@@ -186,13 +186,7 @@ def get_comments(id):
 def get_estadisticas():
     if request.method == "GET": 
         actividades = db.get_all_activities()
-        total_actividades = len(actividades)
-        actividades_por_dia = {}
-        for actividad in actividades:
-            fecha_inicio = actividad[6]
-            if fecha_inicio not in actividades_por_dia:
-                actividades_por_dia[fecha_inicio] = 0
-            actividades_por_dia[fecha_inicio] += 1
+        
 
 if __name__ == "__main__":
     app.run(debug=True)

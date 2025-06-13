@@ -32,8 +32,8 @@
         <tbody>
             {% if actividades %}
                 {% for actividad in actividades %}
-                    <tr>
-                        <td><a href="{{ url_for('actividad', num = actividad.num ) }}"> {{actividad.nombre}} </a></td>
+                    <tr onclick="window.location='{{ url_for('actividad', num = actividad.num ) }}'" style="cursor: pointer;">
+                        <td>{{actividad.nombre}}</td>
                         <td>{{actividad.fecha_inicio}}</td>
                         <td>{{actividad.comuna}}</td>
                         <td>{{actividad.sector}}</td>
