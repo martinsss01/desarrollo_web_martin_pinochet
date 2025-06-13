@@ -182,11 +182,18 @@ def get_comments(id):
             })
         return jsonify({"data": comments_list})
 
-@app.route("/estadisticas", methods = ["GET"])
+@app.route("/estadisticas/conteo", methods = ["GET"])
 def get_estadisticas():
     if request.method == "GET": 
-        actividades = db.get_all_activities()
-        
+        actividades = db.get_activity_count_per_date()
+        fechas = []
+        conteos = []
+        for actividad in actividades:
+            fecha = actividad[0].strftime("%Y-%m-%d")
+            conteo = actividad[1]
+            fechas.append(fecha)
+            conteos.append(conteo)
+        return jsonify({"fechas": fechas, "conteos": conteos})
 
 if __name__ == "__main__":
     app.run(debug=True)

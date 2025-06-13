@@ -128,3 +128,10 @@ def create_comment(name, comment, fecha, id):
 	cursor = conn.cursor()
 	cursor.execute(QUERY_DICT["create_comment"], (name, comment, fecha, id))
 	conn.commit()
+
+def get_activity_count_per_date():
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_activity_count_per_date"])
+	activity_count = cursor.fetchall()
+	return activity_count
