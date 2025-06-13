@@ -115,3 +115,16 @@ def get_contacto_by_act_id(id):
 	cursor.execute(QUERY_DICT["get_contacto_by_act_id"], (id,))
 	contacto = cursor.fetchone()
 	return contacto
+
+def get_comments_by_act_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_comments_by_act_id"], (id,))
+	comments = cursor.fetchall()
+	return comments
+
+def create_comment(name, comment, fecha, id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["create_comment"], (name, comment, fecha, id))
+	conn.commit()

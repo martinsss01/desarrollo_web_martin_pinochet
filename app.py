@@ -1,11 +1,12 @@
-from flask import Flask, request, render_template, redirect, url_for, session
-from utils.validations import validate_activity
+from flask import Flask, request, render_template, redirect, url_for, session, jsonify
+from utils.validations import validate_activity, validate_comment
 from database import db
 from werkzeug.utils import secure_filename
 import hashlib
 import filetype
 import os
 import sys
+import datetime
 
 UPLOAD_FOLDER = 'static/uploads'
 
@@ -129,7 +130,8 @@ def actividad(num):
         _, social, cuenta, _ = db.get_contacto_by_act_id(num)
         img_filename = f"uploads/{nombre_archivo}"
         
-        actividad ={"region": region,
+        actividad ={"num": num,
+                "region": region,
                 "comuna": comuna,
                 "sector": sector,
                 "nombre": nombre,
@@ -147,6 +149,33 @@ def actividad(num):
                 }
         
         return render_template("activities/actividad.html", actividad=actividad, num=num, name=nombre)
+
+
+@app.route('/actividad/<int:id>/comentarios/agregar', methods=['POST'])
+def post_comment(id):
+    if request.method == 'POST':
+        nombre = request.form.get('commentName')
+        comentario = request.form.get('commentText')
+        fecha = datetime.date.today()
+        if validate_comment(nombre, comentario):
+            db.create_comment(nombre, comentario, fecha, id)
+            return redirect(url_for('actividad', num=id))
+        else:
+            return "Comment cannot be empty", 400
+        
+@app.route('/actividad/<int:id>/comentarios', methods=['GET'])
+def get_comments(id):
+    if request.method == 'GET':
+        comments = db.get_comments_by_act_id(id)
+        comments_list = []
+        for comment in comments:
+            comments_list.append({
+                "id": comment.id,
+                "nombre": comment.nombre,
+                "comentario": comment.comentario,
+                "fecha": comment.fecha
+            })
+        return comments
 
 if __name__ == "__main__":
     app.run(debug=True)

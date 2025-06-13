@@ -57,3 +57,6 @@ def validate_activity(nombre,email,celular,fecha_inicio,fecha_termino,descripcio
             and validate_description(descripcion)
     )
 '''and validate_dates(fecha_inicio,fecha_termino)'''
+
+def validate_comment(nombre, comentario):
+    return len(nombre) > 3 and len(comentario) > 5
