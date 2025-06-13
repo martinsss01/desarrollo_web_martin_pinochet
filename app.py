@@ -119,7 +119,7 @@ def estadisticas():
         return render_template("other/estadisticas.html")
 
 
-@app.route("/actividad<int:num>", methods = ["GET"])
+@app.route("/actividad/<int:num>", methods = ["GET"])
 def actividad(num):
     if request.method == "GET": 
         _, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = db.get_activity_by_id(num)
@@ -162,20 +162,37 @@ def post_comment(id):
             return redirect(url_for('actividad', num=id))
         else:
             return "Comment cannot be empty", 400
-        
+
+
 @app.route('/actividad/<int:id>/comentarios', methods=['GET'])
 def get_comments(id):
     if request.method == 'GET':
         comments = db.get_comments_by_act_id(id)
         comments_list = []
         for comment in comments:
+            nombre = comment[0]
+            texto = comment[1]
+            fecha = comment[2]
+            act_id = comment[3]
             comments_list.append({
-                "id": comment.id,
-                "nombre": comment.nombre,
-                "comentario": comment.comentario,
-                "fecha": comment.fecha
+                "nombre": nombre,
+                "comentario": texto,
+                "fecha": fecha,
+                "actividad_id": act_id
             })
-        return comments
+        return jsonify({"data": comments_list})
+
+@app.route("/estadisticas", methods = ["GET"])
+def get_estadisticas():
+    if request.method == "GET": 
+        actividades = db.get_all_activities()
+        total_actividades = len(actividades)
+        actividades_por_dia = {}
+        for actividad in actividades:
+            fecha_inicio = actividad[6]
+            if fecha_inicio not in actividades_por_dia:
+                actividades_por_dia[fecha_inicio] = 0
+            actividades_por_dia[fecha_inicio] += 1
 
 if __name__ == "__main__":
     app.run(debug=True)

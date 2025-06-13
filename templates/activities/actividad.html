@@ -63,11 +63,14 @@
         <button type="submit" style="padding: 10px 20px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Enviar</button>
     </form>
     {% endif %}
-    <div id="commentsSection" style="margin-top: 20px; text-align: center; color: white;">
+    <div id="commentsection" style="margin-top: 20px; text-align: center; color: white;">
         <h3>Comentarios enviados</h3>
-        <ul id="commentsList" style="list-style-type: none; padding: 0;">
+        <ul id="comments-list" style="list-style-type: none; padding: 0;">
         </ul>
     </div>
+    <script>
+        const activityNum = JSON.parse({{ actividad.num|tojson }});
+    </script>
     <script>
         function toggleExpand(img) {
             const modal = document.getElementById("imageModal");
