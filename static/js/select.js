@@ -21,9 +21,8 @@ const temas = ["Música", "Deportes", "Ciencias",
   "Arte", "Juegos", "Baile", 
   "Comida", "Otros"];
 
-const socials = ["WhatsApp", "Facebook", "Instagram", "Twitter",
-    "LinkedIn", "Bluesky", "Mastodon", 
-    "TikTok", "YouTube", "Telegram"];
+const socials = ["WhatsApp", "Facebook", "Instagram", "X",
+    "Tiktok", "Otra"];
 
 const poblarTemas = () => {
   let themeSelect = document.getElementById("tema");

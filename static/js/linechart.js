@@ -1,4 +1,4 @@
-let makeLineChart = (input) => {
+let makeLineChart = (input, ctx) => {
     const labelsArray = [];
     const dataArray = [];
 
@@ -55,7 +55,7 @@ let showLineChart = (ctx) => {
     .then((ajaxResponse) => {
         if (ajaxResponse["status"] === "success") {
             console.log(ajaxResponse);
-            makeLineChart(ajaxResponse["data"]);
+            makeLineChart(ajaxResponse["data"], ctx);
         } else {
             console.error("Error fetching line chart data:", ajaxResponse["message"]);
         }
@@ -64,5 +64,5 @@ let showLineChart = (ctx) => {
 
 window.onload = () => {
     const ctx = document.getElementById('lineChart').getContext('2d');
-    showLineChart();
+    showLineChart(ctx);
 }
