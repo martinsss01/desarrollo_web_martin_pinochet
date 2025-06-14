@@ -1,19 +1,11 @@
 let makeLineChart = (input, ctx) => {
-    const labelsArray = [];
-    const dataArray = [];
-
-    for (let i = 0; i < input.length; i++) {
-        const [a, b] = pairs[i];
-        labelsArray.push(a);
-        dataArray.push(b);
-    }
-        const lineChart = new Chart(ctx, {
+    new Chart(ctx, {
             type: 'line',
             data: {
-                    labels: labelsArray,
+                    labels: input["fechas"],
                     datasets: [{
                         label: 'Número de actividades',
-                        data: dataArray,
+                        data: input["conteos"],
                         borderColor: 'rgba(75, 192, 192, 1)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderWidth: 2,

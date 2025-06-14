@@ -177,7 +177,7 @@ def get_comments(id):
             comments_list.append({
                 "nombre": nombre,
                 "comentario": texto,
-                "fecha": fecha,
+                "fecha": fecha.strftime("%Y-%m-%d"),
                 "actividad_id": act_id
             })
         return jsonify({"data": comments_list})
