@@ -195,6 +195,19 @@ def get_estadisticas():
             conteos.append(conteo)
         return jsonify({"fechas": fechas, "conteos": conteos})
 
+@app.route("/estadisticas/conteo_temas", methods = ["GET"])
+def get_temas():
+    if request.method == "GET": 
+        actividades = db.get_activity_tema_count()
+        fechas = []
+        conteos = []
+        for actividad in actividades:
+            fecha = actividad[0].strftime("%Y-%m-%d")
+            conteo = actividad[1]
+            fechas.append(fecha)
+            conteos.append(conteo)
+        return jsonify({"fechas": fechas, "conteos": conteos})
+    
 if __name__ == "__main__":
     app.run(debug=True)
         

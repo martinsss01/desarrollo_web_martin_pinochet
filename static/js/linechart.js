@@ -1,11 +1,12 @@
-let makeLineChart = (input, ctx) => {
-    new Chart(ctx, {
+const lineChart = document.getElementById('lineChart');
+
+const lc = new Chart(lineChart, {
             type: 'line',
             data: {
-                    labels: input["fechas"],
+                    labels: [],
                     datasets: [{
                         label: 'Número de actividades',
-                        data: input["conteos"],
+                        data: [],
                         borderColor: 'rgba(75, 192, 192, 1)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderWidth: 2,
@@ -37,24 +38,25 @@ let makeLineChart = (input, ctx) => {
                     }
                 }
             });
-    }
 
+const updateLineChart = (chart, data) => {
+    console.log(data["fechas"]);
+    chart["data"]["labels"] = data["fechas"];
+    chart.data.datasets[0].data = data["conteos"];
+    chart.update();
+}
 
-let showLineChart = (ctx) => {
+let showLineChart = (chart) => {
     url = '/estadisticas/conteo_actividades';
     fetch(url)
     .then(response => response.json())
     .then((ajaxResponse) => {
-        if (ajaxResponse["status"] === "success") {
             console.log(ajaxResponse);
-            makeLineChart(ajaxResponse["data"], ctx);
-        } else {
-            console.error("Error fetching line chart data:", ajaxResponse["message"]);
-        }
+            updateLineChart(chart, ajaxResponse);
     })
-}
+    .catch(console.error("Error fetching line chart data:", ajaxResponse["message"]));
+    };
 
 window.onload = () => {
-    const ctx = document.getElementById('lineChart').getContext('2d');
-    showLineChart(ctx);
+    showLineChart(lc);
 }

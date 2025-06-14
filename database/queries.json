@@ -17,5 +17,6 @@
     "get_contacto_by_act_id": "SELECT id, nombre, identificador, actividad_id FROM contactar_por WHERE actividad_id=%s;",
     "get_comments_by_act_id": "SELECT nombre, texto, fecha, actividad_id FROM comentario WHERE actividad_id=%s",
     "create_comment": "INSERT INTO comentario (nombre, texto, fecha, actividad_id) VALUES (%s, %s, %s, %s);",
-    "get_activity_count_per_date": "SELECT dia_hora_inicio, COUNT(*) AS cantidad_actividades FROM actividad GROUP BY dia_hora_inicio ORDER BY dia_hora_inicio;"
+    "get_activity_count_per_date": "SELECT dia_hora_inicio, COUNT(*) AS cantidad_actividades FROM actividad GROUP BY dia_hora_inicio ORDER BY dia_hora_inicio;",
+    "get_activity_tema_count": "SELECT tema, COUNT(*) AS cantidad_actividades FROM actividad_tema GROUP BY tema ORDER BY cantidad_actividades DESC;"
 }

@@ -135,3 +135,10 @@ def get_activity_count_per_date():
 	cursor.execute(QUERY_DICT["get_activity_count_per_date"])
 	activity_count = cursor.fetchall()
 	return activity_count
+
+def get_activity_tema_count():
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_activity_tema_count"])
+	activity_tema_count = cursor.fetchall()
+	return activity_tema_count

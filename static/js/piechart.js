@@ -1,5 +1,6 @@
-const ctx2 = document.getElementById('pieChart').getContext('2d');
-        const pieChart = new Chart(ctx2, {
+const ctx2 = document.getElementById('pieChart');
+
+const pieChart = new Chart(ctx2, {
             type: 'pie', 
             data: {
                 labels: ['En proceso', 'Pendiente', 'Terminado'],
@@ -29,3 +30,4 @@ const ctx2 = document.getElementById('pieChart').getContext('2d');
                 }
             }
         });
+
