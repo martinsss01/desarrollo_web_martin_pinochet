@@ -199,14 +199,14 @@ def get_estadisticas():
 def get_temas():
     if request.method == "GET": 
         actividades = db.get_activity_tema_count()
-        fechas = []
+        temas = []
         conteos = []
         for actividad in actividades:
-            fecha = actividad[0].strftime("%Y-%m-%d")
+            tema = actividad[0]
             conteo = actividad[1]
-            fechas.append(fecha)
+            temas.append(tema)
             conteos.append(conteo)
-        return jsonify({"fechas": fechas, "conteos": conteos})
+        return jsonify({"temas": temas, "conteo": conteos})
     
 if __name__ == "__main__":
     app.run(debug=True)
