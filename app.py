@@ -113,6 +113,35 @@ def ver_actividades(page=1):
             
         return render_template("other/ver_actividades.html", actividades=actividades, page=page, total_pages=len(db.get_all_activities())//5 + 1)
 
+@app.route("/actividades_realizadas/page<int:page>", methods = ["GET"])
+def actividades_realizadas(page=1):
+    if request.method == "GET": 
+        actividades = []
+        for actividad in db.get_all_activities()[5*(page-1):5*page]:
+            act_id, comuna_id, sector, nombre, email, celular, fecha_inicio, fecha_termino, descripcion = actividad
+            _, comuna, region_id = db.get_comuna_by_id(comuna_id)
+            _, region = db.get_region_by_id(region_id)
+            _, _, nombre_archivo, _ = db.get_photo_by_act_id(act_id)
+            _, tema, otro, _ = db.get_tema_by_act_id(act_id)
+            if db.get_nota_by_act_id(act_id) is None:
+                nota = "-"
+            else:
+                _, _, nota = db.get_nota_by_act_id(act_id)
+            if fecha_termino < datetime.datetime.today():
+                actividades.append({"region": region,
+                                    "comuna": comuna,
+                                    "sector": sector,
+                                    "nombre": nombre,
+                                    "tema": tema,
+                                    "fecha_inicio": fecha_inicio,
+                                    "num": act_id,
+                                    "nota": nota
+                                    })
+                                
+            
+        return render_template("other/actividades_realizadas.html", actividades=actividades, page=page, total_pages=len(db.get_all_activities())//5 + 1)
+    
+
 @app.route("/estadisticas", methods = ["GET"])
 def estadisticas():
     if request.method == "GET": 

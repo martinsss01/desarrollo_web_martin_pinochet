@@ -142,3 +142,16 @@ def get_activity_tema_count():
 	cursor.execute(QUERY_DICT["get_activity_tema_count"])
 	activity_tema_count = cursor.fetchall()
 	return activity_tema_count
+
+def create_nota(act_id, nota):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["create_nota"], (act_id, nota))
+	conn.commit()
+
+def get_nota_by_act_id(id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_nota_by_act_id"], (id,))
+	nota = cursor.fetchone()
+	return nota

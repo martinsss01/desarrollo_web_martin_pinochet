@@ -10,6 +10,9 @@
     "get_comuna_by_id": "SELECT id, nombre, region_id FROM comuna where id=%s;",
     "get_region_by_id": "SELECT id, nombre FROM region where id=%s;",
     "create_photo": "INSERT INTO foto (ruta_archivo, nombre_archivo, actividad_id) VALUES (%s, %s, %s);",
+    "create_nota": "INSERT INTO nota (actividad_id, nota) VALUES (%s, %s);",
+    "get_nota_by_act_id": "SELECT actividad_id, nota FROM nota WHERE actividad_id=%s;",
+    
     "get_photo_by_act_id": "SELECT id, ruta_archivo, nombre_archivo, actividad_id FROM foto WHERE actividad_id=%s",
     "get_activity_id_by_name": "SELECT id FROM actividad WHERE nombre=%s;",
     "get_activity_by_id": "SELECT * FROM actividad WHERE id=%s;",
