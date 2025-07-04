@@ -1,0 +1,79 @@
+
+#first_title {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#resumen_evaluaciones {
+    color: white;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: #333;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+table {
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    width: 80%;
+    margin: 20px auto;
+}
+
+tr {
+    background-color: #333;
+    color: white;
+}
+
+td {
+    margin: 5px auto;
+    padding: 10px;
+    text-align: center;
+}
+
+canvas {
+    max-width: 800px;
+    max-height: 650px;
+    width: 100%; 
+    height: auto; 
+}
+table{
+    border: 1px solid white;
+}
+td, th {
+    border: 1px solid white;
+}
+table img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+}
